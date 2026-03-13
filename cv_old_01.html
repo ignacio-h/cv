@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ignacio J. Hernándedz Gómez - CV</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #111318;
+      --bg2:     #16191f;
+      --border:  #252932;
+      --text:    #bcc4d4;
+      --muted:   #525c72;
+      --heading: #e8ecf2;
+      --accent:  #4ade9b;
+      --mono:    ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+      --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* HEADER */
+    .site-header {
+      padding: 1.25rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .site-logo {
+      font-family: var(--mono);
+      font-size: .8rem;
+      color: var(--accent);
+    }
+
+    .site-logo span { color: var(--muted); }
+
+    .site-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .site-nav a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .site-nav a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 10rem 6vw 8rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 900px;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--accent);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: var(--sans);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      color: var(--heading);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.8;
+    }
+
+    .hero-bio strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .hero-stack {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .stack-pill {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: .25rem .8rem;
+      border-radius: 2px;
+      letter-spacing: .04em;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      padding: 0 6vw 8rem;
+    }
+
+    .timeline-title {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 4rem 0 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .timeline-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ENTRY */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem 4rem;
+      align-items: start;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .entry:nth-child(even) {
+      grid-template-columns: auto 1fr;
+    }
+
+    .entry:nth-child(even) .entry-photo {
+      order: -1;
+    }
+
+    /* FOTO */
+    .entry-photo {
+      width: 160px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .entry-photo img {
+      width: 160px;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-radius: 3px;
+      filter: grayscale(30%) brightness(.8) contrast(1.05);
+      transition: filter .5s ease;
+    }
+
+    .entry:hover .entry-photo img {
+      filter: grayscale(10%) brightness(.9) contrast(1.05);
+    }
+
+    .entry-photo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .entry:nth-child(odd)  .entry-photo::after { right: -2rem; }
+    .entry:nth-child(even) .entry-photo::after { left: -2rem; }
+
+    /* TEXTO */
+    .entry-text { min-width: 0; }
+
+    .entry-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      margin-bottom: .6rem;
+      flex-wrap: wrap;
+    }
+
+    .entry-company {
+      font-family: var(--sans);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -.01em;
+    }
+
+    .entry-dates {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--accent);
+      letter-spacing: .06em;
+    }
+
+    .entry-role {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      letter-spacing: .04em;
+    }
+
+    .entry-description {
+      font-size: .95rem;
+      color: var(--text);
+      line-height: 1.85;
+      max-width: 60ch;
+    }
+
+    .entry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: .65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: .2rem .65rem;
+      border-radius: 2px;
+      letter-spacing: .04em;
+      transition: color .2s, border-color .2s;
+    }
+
+    .tag:hover {
+      color: var(--text);
+      border-color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 6vw;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-contact {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    .footer-contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-available {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .avail-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2.5s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .25; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      .entry,
+      .entry:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-photo,
+      .entry:nth-child(even) .entry-photo {
+        order: 0;
+        width: 100%;
+      }
+
+      .entry-photo img {
+        width: 100%;
+        height: 180px;
+      }
+
+      .entry-photo::after { display: none; }
+
+      .hero { padding: 6rem 6vw 5rem; }
+      .site-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="site-logo">Nacho<span>.cs</span></span>
+    <nav>
+      <ul class="site-nav">
+        <li><a href="#">inicio</a></li>
+        <li><a href="#">experiencia</a></li>
+        <li><a href="#">contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="hero-label">Curriculum Vitae</p>
+    <h1 class="hero-name">Ignacio J.<br>Hernández Gómez</h1>
+    <p class="hero-bio">
+      Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
+      por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
+      </br>
+      También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+    </p>
+    <div class="hero-stack">
+      <span class="stack-pill">C#</span>
+      <span class="stack-pill">.NET Core</span>
+      <span class="stack-pill">Clean Code</span>
+      <span class="stack-pill">CSS moderno</span>
+      <span class="stack-pill">Finanzas e inversiones</span>
+    </div>
+  </section>
+
+  <main class="timeline">
+    <h2 class="timeline-title">Experiencia</h2>
+
+    <article class="entry">
+      <div class="entry-text">
+        <div class="entry-meta">
+          <span class="entry-company">El Club de Inversión</span>
+          <span class="entry-dates">Julio 2024 — Diciembre 2025</span>
+        </div>
+        <p class="entry-role">Programador y soporte</p>
+        <p class="entry-description">
+          Esta etapa fue una experiencia muy diferente a lo que venía haciendo y muy gratificante. 
+          Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, 
+          ayudar en las tareas que fueran necesarias en los eventos presenciales 
+          o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, reforzar posiciones y dar entrada o salida a acciones.
+        </p>
+        <div class="entry-tags">
+          <span class="tag">C# · .NET 8</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Azure DevOps</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Microservicios</span>
+          <span class="tag">Arquitectura hexagonal</span>
+        </div>
+      </div>
+      <div class="entry-photo">
+        <img src="./imgs/Foto ECDI.jpg" alt="" aria-hidden="true" />
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="entry-text">
+        <div class="entry-meta">
+          <span class="entry-company">Gnarum</span>
+          <span class="entry-dates">Octubre 2017 — Marzo 2025</span>
+        </div>
+        <p class="entry-role">.NET Developer · Full Stack</p>
+        <p class="entry-description">
+          Desarrollé APIs REST con ASP.NET Core para un SaaS B2B de gestión logística. Me encargué del frontend del panel de administración, donde empecé a explorar CSS Grid, custom properties y animaciones sin depender de frameworks. Un punto de inflexión en mi forma de entender el frontend.
+        </p>
+        <div class="entry-tags">
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">CSS Grid</span>
+          <span class="tag">Entity Framework</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="entry-photo">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80" alt="" aria-hidden="true" />
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="entry-text">
+        <div class="entry-meta">
+          <span class="entry-company">Gamma Systems</span>
+          <span class="entry-dates">2015 — 2017</span>
+        </div>
+        <p class="entry-role">Junior .NET Developer</p>
+        <p class="entry-description">
+          Primeros pasos en una consultora de software. Mantuve aplicaciones legacy en VB.NET y las migré progresivamente a C#. Profundicé en SQL Server y en el diseño de bases de datos relacionales. El debug de errores en producción fue, con diferencia, la mejor escuela.
+        </p>
+        <div class="entry-tags">
+          <span class="tag">C# · VB.NET</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">WinForms</span>
+          <span class="tag">Migración legacy</span>
+        </div>
+      </div>
+      <div class="entry-photo">
+        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&q=80" alt="" aria-hidden="true" />
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="entry-text">
+        <div class="entry-meta">
+          <span class="entry-company">Universidad XYZ</span>
+          <span class="entry-dates">2011 — 2015</span>
+        </div>
+        <p class="entry-role">Grado en Ingeniería Informática</p>
+        <p class="entry-description">
+          Ingeniería Informática con mención en Sistemas y Redes. Desde el primer "Hola, mundo" en C hasta el Trabajo de Fin de Grado, cada proyecto reforzó la misma convicción: los fundamentos sólidos son lo que separa el código que dura del que hay que reescribir en seis meses.
+        </p>
+        <div class="entry-tags">
+          <span class="tag">Java · C</span>
+          <span class="tag">Algoritmos</span>
+          <span class="tag">Bases de datos</span>
+          <span class="tag">Redes</span>
+        </div>
+      </div>
+      <div class="entry-photo">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&q=80" alt="" aria-hidden="true" />
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <span class="footer-contact">
+      <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a>
+    </span>
+    <div class="footer-available">
+      <span class="avail-dot"></span>
+      disponible para nuevas oportunidades
+    </div>
+    <span class="footer-contact" style="color:var(--border)">2024</span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.entry').forEach(function(e) {
+      observer.observe(e);
+    });
+  </script>
+
+</body>
+</html>
