@@ -19,6 +19,8 @@
       --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --max:     1100px;
       --pad:     clamp(1.5rem, 5vw, 5rem);
+      --photo-size:   180px;  /* Cambiar para ajustar tamaño */
+      --photo-radius: 8px;    /* Cambiar a 50% para forma redonda */
     }
 
     html { scroll-behavior: smooth; }
@@ -70,22 +72,6 @@
 
     .site-logo em { color: var(--muted); font-style: normal; }
 
-    .site-nav {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      font-family: var(--mono);
-      font-size: .7rem;
-    }
-
-    .site-nav a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .site-nav a:hover { color: var(--text); }
-
     /* ─── HERO ─── */
     .hero {
       border-bottom: 1px solid var(--border);
@@ -95,39 +81,38 @@
     /* mismo grid de 2 cols que las entradas */
     .hero-inner {
       display: grid;
-      grid-template-columns: 220px 1fr;
+      grid-template-columns: 1fr;
       gap: 0 4rem;
       align-items: end;
     }
 
-    .hero-aside {
-      padding-bottom: .35rem;  /* alinear con baseline del nombre */
-    }
-
-    .hero-label {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--accent);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      margin-bottom: .75rem;
-    }
-
-    .hero-label::before {
-      content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--accent);
+    /* ─── FOTO DE PERFIL ─── */
+    .hero-photo {
+      width: var(--photo-size);
+      height: var(--photo-size);
+      border-radius: var(--photo-radius);
+      border: 1px solid var(--border);
+      object-fit: cover;
+      display: block;
       flex-shrink: 0;
+      transition: opacity .3s ease, transform .3s ease;
     }
 
-    .hero-location {
-      font-family: var(--mono);
-      font-size: .7rem;
-      color: var(--muted);
+    .hero-body .hero-photo:hover {
+      opacity: .85;
+      transform: scale(1.02);
+    }
+
+    .hero-body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 260px;
     }
 
     .hero-name {
@@ -366,10 +351,18 @@
         gap: 1.5rem 0;
       }
 
+      .hero-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        min-width: auto;
+      }
+
       .entry-aside::before,
       .entry-aside::after { display: none; }
-
-      .site-nav { display: none; }
 
       .hero { padding: 5rem 0 4rem; }
     }
@@ -380,14 +373,7 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
-      <span class="site-logo">Nacho<em>.cs</em></span>
-      <nav>
-        <ul class="site-nav">
-          <li><a href="#">inicio</a></li>
-          <li><a href="#">experiencia</a></li>
-          <li><a href="#">contacto</a></li>
-        </ul>
-      </nav>
+      <span class="site-logo">Curriculum<em>.cs</em></span>
     </div>
   </header>
 
@@ -396,25 +382,23 @@
     <div class="wrap">
       <div class="hero-inner">
 
-        <div class="hero-aside">
-          <p class="hero-label">Curriculum Vitae</p>
-          <p class="hero-location">Madrid, España</p>
-        </div>
-
         <div class="hero-body">
-          <h1 class="hero-name">Ignacio J.<br>Hernández Gómez</h1>
-          <p class="hero-bio">
-            Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
-            por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
-            </br>
-            También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
-          </p>
-          <div class="hero-stack">
-            <span class="stack-pill">C#</span>
-            <span class="stack-pill">.NET Core</span>
-            <span class="stack-pill">Clean Code</span>
-            <span class="stack-pill">CSS moderno</span>
-            <span class="stack-pill">Finanzas e inversiones</span>
+          <img src="imgs/hero-photo 2.jpg" alt="Ignacio J. Hernández Gómez" class="hero-photo">
+          <div class="hero-content">
+            <h1 class="hero-name">Ignacio J.<br>Hernández Gómez</h1>
+            <p class="hero-bio">
+              Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
+              por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
+              </br>
+              También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+            </p>
+            <div class="hero-stack">
+              <span class="stack-pill">C#</span>
+              <span class="stack-pill">.NET Core</span>
+              <span class="stack-pill">Clean Code</span>
+              <span class="stack-pill">CSS moderno</span>
+              <span class="stack-pill">Finanzas e inversiones</span>
+            </div>
           </div>
         </div>
 
@@ -434,25 +418,23 @@
         <div class="entry-main">
           <h3 class="entry-company">El Club de Inversión</h3>
           <p class="entry-description">
-            Diseñé y mantuve microservicios en .NET 8 con arquitectura hexagonal. Reduje los tiempos
-            de respuesta de la API principal en un 60 % optimizando queries SQL y añadiendo capas de
-            caché con Redis. Lideré la migración de .NET Framework 4.8 a .NET 7 e implementé
-            pipelines CI/CD con Azure DevOps.
+            Esta etapa fue una experiencia muy diferente a lo que venía haciendo y muy gratificante. 
+            Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, 
+            ayudar en las tareas que fueran necesarias en los eventos presenciales 
+            o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, reforzar posiciones y dar entrada o salida a acciones.
           </p>
           <div class="entry-tags">
-            <span class="tag">C# · .NET 8</span>
-            <span class="tag">SQL Server</span>
-            <span class="tag">Azure DevOps</span>
-            <span class="tag">Redis</span>
-            <span class="tag">Microservicios</span>
-            <span class="tag">Arquitectura hexagonal</span>
+            <span class="tag">PHP</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">Discord</span>
+            <span class="tag">Inversiones</span>
           </div>
         </div>
       </article>
 
       <article class="entry">
         <div class="entry-aside">
-          <span class="entry-dates">2017 — 2020</span>
+          <span class="entry-dates">Octubre 2022 — Marzo 2025</span>
           <span class="entry-role">.NET Developer<br>Full Stack</span>
         </div>
         <div class="entry-main">
@@ -464,11 +446,9 @@
             de entender el frontend.
           </p>
           <div class="entry-tags">
-            <span class="tag">ASP.NET Core</span>
-            <span class="tag">CSS Grid</span>
-            <span class="tag">Entity Framework</span>
-            <span class="tag">REST APIs</span>
-            <span class="tag">PostgreSQL</span>
+            <span class="tag">.NET Framework</span>
+            <span class="tag">SAP</span>
+            <span class="tag">Clean Code</span>
           </div>
         </div>
       </article>
