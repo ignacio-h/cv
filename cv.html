@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ignacio - CV</title>
+  <link rel="icon" href="imgs/favicon.jpg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,7 +20,8 @@
       --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --max:     1100px;
       --pad:     clamp(1.5rem, 5vw, 5rem);
-      --photo-size:   180px;  /* Cambiar para ajustar tamaño */
+      --photo-height:   40vh;  /* Cambiar para ajustar tamaño */
+      --photo-width:   20vw;  /* Cambiar para ajustar tamaño */
       --photo-radius: 8px;    /* Cambiar a 50% para forma redonda */
     }
 
@@ -37,6 +39,11 @@
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    a {
+      /* color: rgb(71, 217, 200); */
+      color: var(--accent);
+    }
 
     /* ─── WRAPPER ─── */
     .wrap {
@@ -88,8 +95,12 @@
 
     /* ─── FOTO DE PERFIL ─── */
     .hero-photo {
-      width: var(--photo-size);
-      height: var(--photo-size);
+      width: var(--photo-width);
+      min-width: 250px;
+      max-width: 330px;
+      height: var(--photo-height);
+      min-height: 250px;
+      max-height: 350px;
       border-radius: var(--photo-radius);
       border: 1px solid var(--border);
       object-fit: cover;
@@ -383,14 +394,13 @@
       <div class="hero-inner">
 
         <div class="hero-body">
-          <img src="imgs/hero-photo 2.jpg" alt="Ignacio J. Hernández Gómez" class="hero-photo">
+          <img src="imgs/hero-photo.png" alt="Ignacio J. Hernández Gómez" class="hero-photo">
           <div class="hero-content">
             <h1 class="hero-name">Ignacio J.<br>Hernández Gómez</h1>
             <p class="hero-bio">
               Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
               por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
-              </br>
-              También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+              <br>También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
             </p>
             <div class="hero-stack">
               <span class="stack-pill">C#</span>
@@ -444,7 +454,7 @@
             a la vez que ayudar a mi madre. En este trabajo me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
             Sin embargo, tuve un compañero excelente que me enseñó muchísimo sobre buenas prácticas, arquitectura y clean code. Esto ha sido lo que más 
             me ha marcado de esta etapa.
-            <br />Entre mis mayores logros en Gnarum, ayudé a mejorar las principales webs que tanto por hacer nuevas funcionalidades como por refactorizaciones 
+            <br>Entre mis mayores logros en Gnarum, ayudé a mejorar las principales webs que tanto por hacer nuevas funcionalidades como por refactorizaciones 
             siguiendo estas enseñanzas de mi compañero, siendo el refactor más importante el del cambio de resolución horaria a cuartohoraria que entró en 
             vigor en diferentes partes de Europa a lo largo de 2025.
           </p>
@@ -465,38 +475,59 @@
         <div class="entry-main">
           <h3 class="entry-company">Gesternova</h3>
           <p class="entry-description">
-            Primeros pasos en una consultora de software. Mantuve aplicaciones legacy en VB.NET y
-            las migré progresivamente a C#. Profundicé en SQL Server y en el diseño de bases de
-            datos relacionales. El debug de errores en producción fue, con diferencia, la mejor
-            escuela.
+            Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
+            Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
+            <br>Aunque empecé con diferentes tareas en diferentes proyectos, en seguida me quedé con la calculadora residencial de instalaciones fotovoltaicas y su complejo algoritmo de optimización de paneles.
+            Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo 
+            con IKEA para la instalación de paneles en España y Portugal.
           </p>
           <div class="entry-tags">
             <span class="tag">C#</span>
             <span class="tag">.NET Core</span>
             <span class="tag">SQL Server</span>
-            <span class="tag">Migración legacy</span>
           </div>
         </div>
       </article>
 
       <article class="entry">
         <div class="entry-aside">
-          <span class="entry-dates">2011 — 2015</span>
-          <span class="entry-role">Grado en<br>Ingeniería Informática</span>
+          <span class="entry-dates">Septiembre 2017 — Junio 2019</span>
+          <span class="entry-role">Prácticas</span>
         </div>
         <div class="entry-main">
-          <h3 class="entry-company">Universidad XYZ</h3>
+          <h3 class="entry-company">Instituto de Ingeniería del Conocimiento (IIC)</h3>
           <p class="entry-description">
-            Ingeniería Informática con mención en Sistemas y Redes. Desde el primer "Hola, mundo"
-            en C hasta el Trabajo de Fin de Grado, cada proyecto reforzó la misma convicción:
-            los fundamentos sólidos son lo que separa el código que dura del que hay que
-            reescribir en seis meses.
+            Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. Dicho proyecto consistía en la refactorización 
+            del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de 
+            base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
           </p>
           <div class="entry-tags">
-            <span class="tag">Java · C</span>
-            <span class="tag">Algoritmos</span>
-            <span class="tag">Bases de datos</span>
-            <span class="tag">Redes</span>
+            <span class="tag">Python</span>
+            <span class="tag">Bash</span>
+            <span class="tag">IBM db2</span>
+            <span class="tag">Scripts</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-aside">
+          <span class="entry-dates">Septiembre 2014 — Enero 2019</span>
+          <span class="entry-role">Grado en<br>Matemáticas e Informática</span>
+        </div>
+        <div class="entry-main">
+          <h3 class="entry-company">Universidad Politécnica de Madrid</h3>
+          <p class="entry-description">
+            Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque no tenía ni idea de nada, pero tenía mucha curiosidad por aprender.
+            <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
+            que me hizo despertar esa vocación por la programación que me ha llevado hasta donde estoy hoy.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag">Matlab</span>
+            <span class="tag">Maple</span>
+            <span class="tag">Matemáticas</span>
           </div>
         </div>
       </article>
@@ -507,10 +538,10 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-label">© 2024</span>
+      <span class="footer-label">© 2025</span>
       <div class="footer-right">
         <span class="footer-email">
-          <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a>
+          <a href="mailto:ignaciojhergomez@gmail.com">ignaciojhergomez@gmail.com</a>
         </span>
         <div class="footer-available">
           <span class="avail-dot"></span>
