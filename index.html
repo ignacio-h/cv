@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ignacio - CV</title>
+  <link rel="icon" href="imgs/favicon.jpg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #111318;
+      --border:  #1e2330;
+      --text:    #b8c1d4;
+      --muted:   #485268;
+      --dim:     #2a3144;
+      --heading: #e4eaf4;
+      --accent:  #4ade9b;
+      --mono:    ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+      --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max:     1100px;
+      --pad:     clamp(1.5rem, 5vw, 5rem);
+      --photo-height:   40vh;
+      --photo-width:   20vw;
+      --photo-radius: 50%;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    a {
+      /* color: rgb(71, 217, 200); */
+      color: var(--accent);
+    }
+
+    /* ─── WRAPPER ─── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem var(--pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-logo {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--accent);
+      letter-spacing: .04em;
+    }
+
+    .site-logo em { color: var(--muted); font-style: normal; }
+
+    /* ─── HERO ─── */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 8rem 0 6rem;
+    }
+
+    /* mismo grid de 2 cols que las entradas */
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 4rem;
+      align-items: end;
+    }
+
+    /* ─── FOTO DE PERFIL ─── */
+    .hero-photo {
+      width: var(--photo-width);
+      min-width: 250px;
+      max-width: 330px;
+      height: var(--photo-height);
+      min-height: 250px;
+      max-height: 350px;
+      border-radius: var(--photo-radius);
+      border: 1px solid var(--border);
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+
+    .hero-body .hero-photo:hover {
+      opacity: .85;
+      transform: scale(1.02);
+    }
+
+    .hero-body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      color: var(--heading);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 62ch;
+      line-height: 1.85;
+    }
+
+    .hero-bio strong { color: var(--text); font-weight: 400; }
+
+    .hero-stack {
+      margin-top: 2rem;
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+    }
+
+    .stack-pill {
+      font-family: var(--mono);
+      font-size: .65rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: .2rem .75rem;
+      border-radius: 2px;
+      letter-spacing: .04em;
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--muted);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 3.5rem 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── ENTRY ─── */
+    .entry {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0 4rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── COLUMNA IZQUIERDA ─── */
+    .entry-aside {
+      padding-top: .15rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      position: relative;
+    }
+
+    /* Línea de timeline */
+    .entry-aside::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: .55rem;
+      bottom: -3rem;
+      width: 1px;
+      background: var(--border);
+    }
+
+    /* Punto en la línea */
+    .entry-aside::after {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 3px);
+      top: .55rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--dim);
+      border: 1px solid var(--muted);
+    }
+
+    .entry:hover .entry-aside::after {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .entry-dates {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--accent);
+      letter-spacing: .05em;
+    }
+
+    .entry-role {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── COLUMNA DERECHA ─── */
+    .entry-main {}
+
+    .entry-company {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -.015em;
+      margin-bottom: .9rem;
+    }
+
+    .entry-description {
+      font-size: .95rem;
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+    .entry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: 1.4rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: .63rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: .18rem .6rem;
+      border-radius: 2px;
+      letter-spacing: .04em;
+      transition: color .2s, border-color .2s;
+    }
+
+    .tag:hover {
+      color: var(--text);
+      border-color: var(--muted);
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0 4rem;
+      align-items: center;
+    }
+
+    .footer-label {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--muted);
+    }
+
+    .footer-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-email {
+      font-family: var(--mono);
+      font-size: .75rem;
+    }
+
+    .footer-email a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-available {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .avail-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2.5s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .2; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 680px) {
+      .hero-inner,
+      .entry,
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem 0;
+      }
+
+      .hero-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        min-width: auto;
+      }
+
+      .entry-aside::before,
+      .entry-aside::after { display: none; }
+
+      .hero { padding: 5rem 0 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <span class="site-logo">Curriculum<em>.cs</em></span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+
+        <div class="hero-body">
+          <img src="imgs/hero-photo.png" alt="Ignacio J. Hernández Gómez" class="hero-photo">
+          <div class="hero-content">
+            <h1 class="hero-name">Ignacio J.<br>Hernández Gómez</h1>
+            <p class="hero-bio">
+              Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
+              por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
+              <br>También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+            </p>
+            <div class="hero-stack">
+              <span class="stack-pill">C#</span>
+              <span class="stack-pill">.NET Core</span>
+              <span class="stack-pill">Clean Code</span>
+              <span class="stack-pill">CSS moderno</span>
+              <span class="stack-pill">Finanzas e inversiones</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <main>
+    <div class="wrap">
+
+      <article class="entry">
+        <div class="entry-aside">
+          <span class="entry-dates">Julio 2024 — Diciembre 2025</span>
+          <span class="entry-role">Programador<br>Soporte</span>
+        </div>
+        <div class="entry-main">
+          <h3 class="entry-company">El Club de Inversión</h3>
+          <p class="entry-description">
+            Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
+            <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> 
+            como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, ayudar en las tareas que fueran 
+            necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, reforzar posiciones y dar entrada o salida a acciones.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">Discord</span>
+            <span class="tag">Inversiones</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-aside">
+          <span class="entry-dates">Octubre 2022 — Marzo 2025</span>
+          <span class="entry-role">.NET Developer<br>Full Stack</span>
+        </div>
+        <div class="entry-main">
+          <h3 class="entry-company">Gnarum</h3>
+          <p class="entry-description">
+            Entré en Gnarum porque tras el fallecimiento de mi padre necesitaba un trabajo que me permitiera seguir con mis planes económicos 
+            a la vez que ayudar a mi madre. 
+            <br>En este trabajo me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
+            Sin embargo, tuve un compañero excelente que me enseñó muchísimo sobre buenas prácticas, arquitectura y clean code. Esto ha sido lo que más 
+            me ha marcado de esta etapa.
+            <br>Entre mis mayores logros en Gnarum, ayudé a mejorar las principales webs tanto por hacer nuevas funcionalidades como por refactorizaciones 
+            siguiendo estas enseñanzas de mi compañero, siendo el refactor más importante el del cambio de resolución horaria a cuartohoraria que entró en 
+            vigor en diferentes partes de Europa a lo largo de 2025.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">C#</span>
+            <span class="tag">.NET Framework</span>
+            <span class="tag">SAP</span>
+            <span class="tag">Clean Code</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-aside">
+          <span class="entry-dates">Julio 2019 — Septiembre 2022</span>
+          <span class="entry-role">Junior .NET<br>Developer</span>
+        </div>
+        <div class="entry-main">
+          <h3 class="entry-company">Gesternova</h3>
+          <p class="entry-description">
+            Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
+            Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
+            <br>Aunque empecé con diferentes tareas en diferentes proyectos, en seguida me quedé con la calculadora residencial de instalaciones fotovoltaicas y su complejo algoritmo de optimización de paneles.
+            Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo 
+            con IKEA para la instalación de paneles en España y Portugal.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">C#</span>
+            <span class="tag">.NET Core</span>
+            <span class="tag">SQL Server</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-aside">
+          <span class="entry-dates">Septiembre 2017 — Junio 2019</span>
+          <span class="entry-role">Prácticas</span>
+        </div>
+        <div class="entry-main">
+          <h3 class="entry-company">Instituto de Ingeniería del Conocimiento (IIC)</h3>
+          <p class="entry-description">
+            Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. Dicho proyecto consistía en la refactorización 
+            del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de 
+            base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Bash</span>
+            <span class="tag">IBM db2</span>
+            <span class="tag">Scripts</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-aside">
+          <span class="entry-dates">Septiembre 2014 — Enero 2019</span>
+          <span class="entry-role">Grado en<br>Matemáticas e Informática</span>
+        </div>
+        <div class="entry-main">
+          <h3 class="entry-company">Universidad Politécnica de Madrid</h3>
+          <p class="entry-description">
+            Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque no tenía ni idea de nada, pero tenía mucha curiosidad por aprender.
+            <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
+            que me hizo despertar esa vocación por la programación que me ha llevado hasta donde estoy hoy.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag">Matlab</span>
+            <span class="tag">Maple</span>
+            <span class="tag">Matemáticas</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-label">© <span id="copyright-year"></span></span>
+      <div class="footer-right">
+        <span class="footer-email">
+          <a href="mailto:ignaciojhergomez@gmail.com">ignaciojhergomez@gmail.com</a>
+        </span>
+        <div class="footer-available">
+          <span class="avail-dot"></span>
+          disponible para nuevas oportunidades
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.entry').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    const year = document.getElementById('copyright-year');
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
+  </script>
+
+</body>
+</html>
