@@ -46,19 +46,20 @@
       overflow-x: hidden;
     }
 
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    ::-webkit-scrollbar { 
+      width: 4px; 
+    }
+    ::-webkit-scrollbar-track { 
+      background: var(--bg); 
+    }
+    ::-webkit-scrollbar-thumb { 
+      background: var(--border); 
+      border-radius: 2px; 
+    }
 
     a {
       /* color: rgb(71, 217, 200); */
       color: var(--accent);
-    }
-
-    main, .wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 var(--pad);
     }
 
     header {
@@ -97,6 +98,10 @@
     }
 
     main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+
       & > section.introduction {
         border-bottom: 1px solid var(--border);
         padding: 8rem 0 6rem;
@@ -151,89 +156,91 @@
           }
         }
       }
-    }
 
-    .entry {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 0 4rem;
-      padding: 3rem 0;
-      border-bottom: 1px solid var(--border);
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
+      & > section.history {
+        & > article {
+          display: grid;
+          grid-template-columns: 220px 1fr;
+          gap: 0 4rem;
+          padding: 3rem 0;
+          border-bottom: 1px solid var(--border);
+          opacity: 0;
+          transform: translateY(16px);
+          transition: opacity .55s ease, transform .55s ease;
 
-    .entry.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+          &:hover .timeline::after {
+            background: var(--accent);
+            border-color: var(--accent);
+          }
 
-    /* ─── COLUMNA IZQUIERDA ─── */
-    .entry-aside {
-      padding-top: .15rem;
-      display: flex;
-      flex-direction: column;
-      gap: .4rem;
-      position: relative;
-    }
+          &.visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
 
-    /* Línea de timeline */
-    .entry-aside::before {
-      content: '';
-      position: absolute;
-      left: -1.5rem;
-      top: .55rem;
-      bottom: -3rem;
-      width: 1px;
-      background: var(--border);
-    }
+          /* ─── LEFT COLUMN ─── */
+          & > .timeline {
+            padding-top: .15rem;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            position: relative;
+            
+            &::before {
+              content: '';
+              position: absolute;
+              left: -1.5rem;
+              top: .55rem;
+              bottom: -3rem;
+              width: 1px;
+              background: var(--border);
+            }
+            
+            &::after {
+              content: '';
+              position: absolute;
+              left: calc(-1.5rem - 3px);
+              top: .55rem;
+              width: 7px;
+              height: 7px;
+              border-radius: 50%;
+              background: var(--dim);
+              border: 1px solid var(--muted);
+            }
 
-    /* Punto en la línea */
-    .entry-aside::after {
-      content: '';
-      position: absolute;
-      left: calc(-1.5rem - 3px);
-      top: .55rem;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--dim);
-      border: 1px solid var(--muted);
-    }
+            & > .dates {
+              font-family: var(--mono);
+              font-size: .7rem;
+              color: var(--accent);
+              letter-spacing: .05em;
+            }
+        
+            & > .roles {
+              font-family: var(--mono);
+              font-size: .72rem;
+              color: var(--muted);
+              line-height: 1.5;
+            }
+          }
 
-    .entry:hover .entry-aside::after {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
+          /* ─── RIGHT COLUMN ─── */
+          & > .company {
+            & > h3 {
+              font-size: 1.25rem;
+              font-weight: 700;
+              color: var(--heading);
+              letter-spacing: -.015em;
+              margin-bottom: .9rem;
+            }
 
-    .entry-dates {
-      font-family: var(--mono);
-      font-size: .7rem;
-      color: var(--accent);
-      letter-spacing: .05em;
-    }
-
-    .entry-role {
-      font-family: var(--mono);
-      font-size: .72rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ─── COLUMNA DERECHA ─── */
-    .entry-company {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--heading);
-      letter-spacing: -.015em;
-      margin-bottom: .9rem;
-    }
-
-    .entry-description {
-      font-size: .95rem;
-      color: var(--text);
-      line-height: 1.85;
+            & > p {
+              font-size: .95rem;
+              color: var(--text);
+              line-height: 1.85;
+            }
+          }
+        }
+      }
     }
 
     .skills {
@@ -317,33 +324,42 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: .2; }
+      0%, 100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .2;
+      }
     }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 680px) {
-      .introduction-inner,
-      .entry,
+      main > section.introduction,
+      main > section.history > article,
       .footer-inner {
         grid-template-columns: 1fr;
         gap: 1.5rem 0;
       }
 
-      .introduction-body {
+      main > section.introduction {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
 
-      .introduction-content {
+      main > section.introduction > div {
         min-width: auto;
       }
 
-      .entry-aside::before,
-      .entry-aside::after { display: none; }
+      .timeline::before, .timeline::after { 
+        display: none; 
+      }
 
-      .introduction { padding: 5rem 0 4rem; }
+      main > section.introduction 
+      { 
+        padding: 5rem 0 4rem; 
+      }
     }
   </style>
 </head>
@@ -376,14 +392,14 @@
       </div>
     </section>
 
-    <section class="wrap">
-      <article class="entry">
-        <div class="entry-aside">
-          <span class="entry-dates">Julio 2024 — Diciembre 2025</span>
-          <span class="entry-role">Programador<br>Soporte</span>
+    <section class="history">
+      <article>
+        <div class="timeline">
+          <span class="dates">Julio 2024 — Diciembre 2025</span>
+          <span class="roles">Programador<br>Soporte</span>
         </div>
-        <div class="entry-main">
-          <h3 class="entry-company">El Club de Inversión</h3>
+        <div class="company">
+          <h3>El Club de Inversión</h3>
           <p class="entry-description">
             Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
             <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> 
@@ -399,13 +415,13 @@
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-aside">
-          <span class="entry-dates">Octubre 2022 — Marzo 2025</span>
-          <span class="entry-role">.NET Developer<br>Full Stack</span>
+      <article>
+        <div class="timeline">
+          <span class="dates">Octubre 2022 — Marzo 2025</span>
+          <span class="roles">.NET Developer<br>Full Stack</span>
         </div>
-        <div class="entry-main">
-          <h3 class="entry-company">Gnarum</h3>
+        <div class="company">
+          <h3>Gnarum</h3>
           <p class="entry-description">
             Entré en Gnarum porque tras el fallecimiento de mi padre necesitaba un trabajo que me permitiera seguir con mis planes económicos 
             a la vez que ayudar a mi madre. 
@@ -425,13 +441,13 @@
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-aside">
-          <span class="entry-dates">Julio 2019 — Septiembre 2022</span>
-          <span class="entry-role">Junior .NET<br>Developer</span>
+      <article>
+        <div class="timeline">
+          <span class="dates">Julio 2019 — Septiembre 2022</span>
+          <span class="roles">Junior .NET<br>Developer</span>
         </div>
-        <div class="entry-main">
-          <h3 class="entry-company">Gesternova</h3>
+        <div class="company">
+          <h3>Gesternova</h3>
           <p class="entry-description">
             Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
             Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
@@ -447,13 +463,13 @@
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-aside">
-          <span class="entry-dates">Septiembre 2017 — Junio 2019</span>
-          <span class="entry-role">Prácticas</span>
+      <article>
+        <div class="timeline">
+          <span class="dates">Septiembre 2017 — Junio 2019</span>
+          <span class="roles">Prácticas</span>
         </div>
-        <div class="entry-main">
-          <h3 class="entry-company">Instituto de Ingeniería del Conocimiento (IIC)</h3>
+        <div class="company">
+          <h3>Instituto de Ingeniería del Conocimiento (IIC)</h3>
           <p class="entry-description">
             Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. Dicho proyecto consistía en la refactorización 
             del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de 
@@ -468,13 +484,13 @@
         </div>
       </article>
 
-      <article class="entry">
-        <div class="entry-aside">
-          <span class="entry-dates">Septiembre 2014 — Enero 2019</span>
-          <span class="entry-role">Grado en<br>Matemáticas e Informática</span>
+      <article>
+        <div class="timeline">
+          <span class="dates">Septiembre 2014 — Enero 2019</span>
+          <span class="roles">Grado en<br>Matemáticas e Informática</span>
         </div>
-        <div class="entry-main">
-          <h3 class="entry-company">Universidad Politécnica de Madrid</h3>
+        <div class="company">
+          <h3>Universidad Politécnica de Madrid</h3>
           <p class="entry-description">
             Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque no tenía ni idea de nada, pero tenía mucha curiosidad por aprender.
             <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
@@ -518,7 +534,7 @@
       });
     }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.entry').forEach(function(el) {
+    document.querySelectorAll('.history > article').forEach(function(el) {
       observer.observe(el);
     });
 
