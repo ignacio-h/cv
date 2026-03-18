@@ -9,19 +9,22 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #111318;
-      --border:  #1e2330;
-      --text:    #b8c1d4;
-      --muted:   #485268;
-      --dim:     #2a3144;
+      --bg: #111318;
+      --border: #1e2330;
+      --text: #b8c1d4;
+      --muted: #485268;
+      --dim: #2a3144;
       --heading: #e4eaf4;
-      --accent:  #4ade9b;
-      --mono:    ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
-      --sans:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --max:     1100px;
-      --pad:     clamp(1.5rem, 5vw, 5rem);
-      --photo-height:   40vh;
-      --photo-width:   20vw;
+      --accent: #4ade9b;
+      --accent2: #9184ee;
+      --accent3: #d8a0df;
+      --mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max: 1100px;
+      /* --pad: clamp(1.5rem, 5vw, 5rem); */
+      --pad: 1rem;
+      --photo-height: 40vh;
+      --photo-width: 20vw;
       --photo-radius: 50%;
     }
 
@@ -52,32 +55,41 @@
       padding: 0 var(--pad);
     }
 
-    /* ─── HEADER ─── */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
+      
+      & > div {
+        max-width: var(--max);
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        
+        & > span {
+          padding: 1rem;
+          font-family: var(--mono);
+          font-size: .78rem;
+          color: var(--accent);
+          letter-spacing: .04em;
+          cursor: pointer;
+          
+          &:hover {
+            background-color: var(--border);
+          }
+
+          & > em { 
+            color: var(--muted); 
+            font-style: normal; 
+          }
+        }
+      }
     }
 
-    .header-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 1rem var(--pad);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .site-logo {
-      font-family: var(--mono);
-      font-size: .78rem;
-      color: var(--accent);
-      letter-spacing: .04em;
-    }
-
-    .site-logo em { color: var(--muted); font-style: normal; }
 
     /* ─── HERO ─── */
     .hero {
@@ -381,10 +393,9 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
-    <div class="header-inner">
-      <span class="site-logo">Curriculum<em>.cs</em></span>
+    <div>
+      <span>Curriculum<em>.cs</em></span>
     </div>
   </header>
 
