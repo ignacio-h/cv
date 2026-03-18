@@ -58,8 +58,8 @@
     }
 
     a {
-      /* color: rgb(71, 217, 200); */
       color: var(--accent);
+      text-decoration: none;
     }
 
     header {
@@ -266,56 +266,41 @@
       }
     }
 
-    /* ─── FOOTER ─── */
-    .site-footer {
+    footer {
       border-top: 1px solid var(--border);
       padding: 2.5rem 0;
+      
+        & > div {
+          max-width: var(--max);
+          margin: 0 auto;
+          padding: 0 var(--pad);
+          display: grid;
+          grid-template-columns: 220px 1fr;
+          gap: 0 4rem;
+          align-items: center;
+
+          & > span {
+            font-family: var(--mono);
+            font-size: .68rem;
+            color: var(--muted);
+          }
+          
+          & > .personal-data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            
+            & > .email {
+              font-family: var(--mono);
+              font-size: .75rem;
+            }
+          }
+        }
     }
 
-    .footer-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 var(--pad);
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 0 4rem;
-      align-items: center;
-    }
-
-    .footer-label {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--muted);
-    }
-
-    .footer-right {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-email {
-      font-family: var(--mono);
-      font-size: .75rem;
-    }
-
-    .footer-email a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .footer-available {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    .avail-dot {
+    .pulsing-dot {
       width: 6px;
       height: 6px;
       background: var(--accent);
@@ -337,7 +322,7 @@
     @media (max-width: 680px) {
       main > section.introduction,
       main > section.history > article,
-      .footer-inner {
+      footer > div {
         grid-template-columns: 1fr;
         gap: 1.5rem 0;
       }
@@ -509,17 +494,13 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer>
     <div class="footer-inner">
       <span class="footer-label">© <span id="copyright-year"></span></span>
-      <div class="footer-right">
-        <span class="footer-email">
+      <div class="personal-data">
+        <span class="email">
           <a href="mailto:ignaciojhergomez@gmail.com">ignaciojhergomez@gmail.com</a>
         </span>
-        <div class="footer-available">
-          <span class="avail-dot"></span>
-          disponible para nuevas oportunidades
-        </div>
       </div>
     </div>
   </footer>
