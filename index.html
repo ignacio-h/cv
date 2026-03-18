@@ -6,7 +6,12 @@
   <title>Ignacio - CV</title>
   <link rel="icon" href="imgs/favicon.jpg" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after 
+    { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
 
     :root {
       --bg: #111318;
@@ -28,7 +33,9 @@
       --photo-radius: 50%;
     }
 
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth; 
+    }
 
     body {
       background: var(--bg);
@@ -48,8 +55,7 @@
       color: var(--accent);
     }
 
-    /* ─── WRAPPER ─── */
-    .wrap {
+    main, .wrap {
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 var(--pad);
@@ -90,111 +96,63 @@
       }
     }
 
+    main {
+      & > section.introduction {
+        border-bottom: 1px solid var(--border);
+        padding: 8rem 0 6rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: flex-start;
+        
+        & > img {
+          width: var(--photo-width);
+          min-width: 250px;
+          max-width: 330px;
+          height: var(--photo-height);
+          min-height: 250px;
+          max-height: 350px;
+          border-radius: var(--photo-radius);
+          border: 1px solid var(--border);
+          object-fit: cover;
+          display: block;
+          flex-shrink: 0;
+          transition: opacity .3s ease, transform .3s ease;
 
-    /* ─── HERO ─── */
-    .hero {
-      border-bottom: 1px solid var(--border);
-      padding: 8rem 0 6rem;
+          &:hover {
+            opacity: .85;
+            transform: scale(1.02);
+          }
+        }
+
+        & > div {
+          flex: 1;
+          min-width: 260px;
+
+          & > h1 {
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -.03em;
+            color: var(--heading);
+            margin-bottom: 1.25rem;
+          }
+
+          & > p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 62ch;
+            line-height: 1.85;
+
+            & > strong {
+              color: var(--text);
+              font-weight: 400;
+            }
+          }
+        }
+      }
     }
 
-    /* mismo grid de 2 cols que las entradas */
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0 4rem;
-      align-items: end;
-    }
-
-    /* ─── FOTO DE PERFIL ─── */
-    .hero-photo {
-      width: var(--photo-width);
-      min-width: 250px;
-      max-width: 330px;
-      height: var(--photo-height);
-      min-height: 250px;
-      max-height: 350px;
-      border-radius: var(--photo-radius);
-      border: 1px solid var(--border);
-      object-fit: cover;
-      display: block;
-      flex-shrink: 0;
-      transition: opacity .3s ease, transform .3s ease;
-    }
-
-    .hero-body .hero-photo:hover {
-      opacity: .85;
-      transform: scale(1.02);
-    }
-
-    .hero-body {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .hero-content {
-      flex: 1;
-      min-width: 260px;
-    }
-
-    .hero-name {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -.03em;
-      color: var(--heading);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-bio {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 62ch;
-      line-height: 1.85;
-    }
-
-    .hero-bio strong { color: var(--text); font-weight: 400; }
-
-    .hero-stack {
-      margin-top: 2rem;
-      display: flex;
-      gap: .4rem;
-      flex-wrap: wrap;
-    }
-
-    .stack-pill {
-      font-family: var(--mono);
-      font-size: .65rem;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: .2rem .75rem;
-      border-radius: 2px;
-      letter-spacing: .04em;
-    }
-
-    /* ─── SECTION LABEL ─── */
-    .section-label {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--muted);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      padding: 3.5rem 0 2rem;
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ─── ENTRY ─── */
     .entry {
       display: grid;
       grid-template-columns: 220px 1fr;
@@ -264,8 +222,6 @@
     }
 
     /* ─── COLUMNA DERECHA ─── */
-    .entry-main {}
-
     .entry-company {
       font-size: 1.25rem;
       font-weight: 700;
@@ -280,27 +236,27 @@
       line-height: 1.85;
     }
 
-    .entry-tags {
+    .skills {
       display: flex;
       flex-wrap: wrap;
       gap: .35rem;
       margin-top: 1.4rem;
-    }
+      
+      & > span {
+        font-family: var(--mono);
+        font-size: .63rem;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: .18rem .6rem;
+        border-radius: 2px;
+        letter-spacing: .04em;
+        transition: color .2s, border-color .2s;
 
-    .tag {
-      font-family: var(--mono);
-      font-size: .63rem;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: .18rem .6rem;
-      border-radius: 2px;
-      letter-spacing: .04em;
-      transition: color .2s, border-color .2s;
-    }
-
-    .tag:hover {
-      color: var(--text);
-      border-color: var(--muted);
+        &:hover {
+          color: var(--text);
+          border-color: var(--muted);
+        }
+      }
     }
 
     /* ─── FOOTER ─── */
@@ -367,27 +323,27 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 680px) {
-      .hero-inner,
+      .introduction-inner,
       .entry,
       .footer-inner {
         grid-template-columns: 1fr;
         gap: 1.5rem 0;
       }
 
-      .hero-body {
+      .introduction-body {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
 
-      .hero-content {
+      .introduction-content {
         min-width: auto;
       }
 
       .entry-aside::before,
       .entry-aside::after { display: none; }
 
-      .hero { padding: 5rem 0 4rem; }
+      .introduction { padding: 5rem 0 4rem; }
     }
   </style>
 </head>
@@ -399,38 +355,28 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-inner">
-
-        <div class="hero-body">
-          <img src="imgs/hero-photo.png" alt="Ignacio J. Hernández Gómez" class="hero-photo">
-          <div class="hero-content">
-            <h1 class="hero-name">Ignacio J.<br>Hernández Gómez</h1>
-            <p class="hero-bio">
-              Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
-              por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
-              <br>También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
-            </p>
-            <div class="hero-stack">
-              <span class="stack-pill">C#</span>
-              <span class="stack-pill">.NET Core</span>
-              <span class="stack-pill">Clean Code</span>
-              <span class="stack-pill">CSS moderno</span>
-              <span class="stack-pill">Finanzas e inversiones</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- TIMELINE -->
   <main>
-    <div class="wrap">
+    <section class="introduction">
+      <img src="imgs/hero-photo.png" alt="Ignacio J. Hernández Gómez">
 
+      <div>
+        <h1>Ignacio J.<br>Hernández Gómez</h1>
+        <p>
+          Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
+          por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
+          <br>También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+        </p>
+        <div class="skills">
+          <span>C#</span>
+          <span>.NET Core</span>
+          <span>Clean Code</span>
+          <span>CSS moderno</span>
+          <span>Finanzas e inversiones</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
       <article class="entry">
         <div class="entry-aside">
           <span class="entry-dates">Julio 2024 — Diciembre 2025</span>
@@ -444,11 +390,11 @@
             como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, ayudar en las tareas que fueran 
             necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, reforzar posiciones y dar entrada o salida a acciones.
           </p>
-          <div class="entry-tags">
-            <span class="tag">PHP</span>
-            <span class="tag">WordPress</span>
-            <span class="tag">Discord</span>
-            <span class="tag">Inversiones</span>
+          <div class="skills">
+            <span>PHP</span>
+            <span>WordPress</span>
+            <span>Discord</span>
+            <span>Inversiones</span>
           </div>
         </div>
       </article>
@@ -470,11 +416,11 @@
             siguiendo estas enseñanzas de mi compañero, siendo el refactor más importante el del cambio de resolución horaria a cuartohoraria que entró en 
             vigor en diferentes partes de Europa a lo largo de 2025.
           </p>
-          <div class="entry-tags">
-            <span class="tag">C#</span>
-            <span class="tag">.NET Framework</span>
-            <span class="tag">SAP</span>
-            <span class="tag">Clean Code</span>
+          <div class="skills">
+            <span>C#</span>
+            <span>.NET Framework</span>
+            <span>SAP</span>
+            <span>Clean Code</span>
           </div>
         </div>
       </article>
@@ -493,10 +439,10 @@
             Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo 
             con IKEA para la instalación de paneles en España y Portugal.
           </p>
-          <div class="entry-tags">
-            <span class="tag">C#</span>
-            <span class="tag">.NET Core</span>
-            <span class="tag">SQL Server</span>
+          <div class="skills">
+            <span>C#</span>
+            <span>.NET Core</span>
+            <span>SQL Server</span>
           </div>
         </div>
       </article>
@@ -513,11 +459,11 @@
             del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de 
             base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
           </p>
-          <div class="entry-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Bash</span>
-            <span class="tag">IBM db2</span>
-            <span class="tag">Scripts</span>
+          <div class="skills">
+            <span>Python</span>
+            <span>Bash</span>
+            <span>IBM db2</span>
+            <span>Scripts</span>
           </div>
         </div>
       </article>
@@ -534,20 +480,19 @@
             <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
             que me hizo despertar esa vocación por la programación que me ha llevado hasta donde estoy hoy.
           </p>
-          <div class="entry-tags">
-            <span class="tag">Java</span>
-            <span class="tag">Python</span>
-            <span class="tag">Matlab</span>
-            <span class="tag">Maple</span>
-            <span class="tag">Matemáticas</span>
+          <div class="skills">
+            <span>Java</span>
+            <span>Python</span>
+            <span>Matlab</span>
+            <span>Maple</span>
+            <span>Matemáticas</span>
           </div>
         </div>
       </article>
 
-    </div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <span class="footer-label">© <span id="copyright-year"></span></span>
