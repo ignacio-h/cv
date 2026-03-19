@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ignacio</title>
   <link rel="icon" href="imgs/logo-1-no-bg-2_1.png" />
+  <!-- https://fontawesome.com/search?ic=free-collection -->
+  <link rel="stylesheet" href="css/font-awesome-701.min.css" />
   <style>
     *, *::before, *::after 
     { 
@@ -243,27 +245,21 @@
           max-width: var(--max);
           margin: 0 auto;
           padding: 0 var(--pad);
-          display: grid;
-          grid-template-columns: 220px 1fr;
-          gap: 0 4rem;
-          align-items: center;
+          display: flex;
+          justify-content: space-between;
 
           & > span {
             font-family: var(--mono);
-            font-size: .68rem;
             color: var(--muted);
           }
           
           & > .personal-data {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            
-            & > .email {
-              font-family: var(--mono);
-              font-size: .75rem;
+
+            & i {
+              font-size: 1.75rem;
             }
           }
         }
@@ -494,16 +490,18 @@
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <span class="footer-label">© <span id="copyright-year"></span></span>
+    <div>
       <div class="personal-data">
-        <span class="email">
-          <a href="mailto:ignaciojhergomez@gmail.com">ignaciojhergomez@gmail.com</a>
+        <span>
+          <a href="mailto:ignaciojhergomez@gmail.com"><i class="fa-solid fa-envelope"></i></a>
         </span>
         <span>
-          Primera versión funcional de está página. En progreso...
+          <a href="https://www.linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank"><i class="fa-brands fa-square-linkedin"></i></a>
         </span>
       </div>
+      <span>
+        Primera versión funcional de está página. En progreso... © <span id="copyright-year"></span>
+      </span>
     </div>
   </footer>
 
