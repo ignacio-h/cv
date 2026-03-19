@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ignacio - CV</title>
-  <link rel="icon" href="imgs/favicon.jpg" />
+  <title>Ignacio</title>
+  <link rel="icon" href="imgs/logo-1-no-bg-2_1.png" />
   <style>
     *, *::before, *::after 
     { 
@@ -104,7 +104,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
-        align-items: flex-start;
+        align-items: center;
         
         & > img {
           width: clamp(var(--photo-min-width), var(--photo-width), var(--photo-max-width));
@@ -139,7 +139,6 @@
           & > p {
             font-size: 1rem;
             color: var(--muted);
-            max-width: 62ch;
             line-height: 1.85;
 
             & > strong {
@@ -285,7 +284,7 @@
       & > span {
         font-family: var(--mono);
         font-size: .63rem;
-        color: var(--muted);
+        color: var(--text);
         border: 1px solid var(--border);
         padding: .18rem .6rem;
         border-radius: 2px;
@@ -356,7 +355,7 @@
 
   <main>
     <section class="introduction">
-      <img src="imgs/hero-photo.png" alt="Ignacio J. Hernández Gómez">
+      <img src="imgs/personal.png" alt="Ignacio J. Hernández Gómez">
 
       <div>
         <h1>Ignacio J.<br>Hernández Gómez</h1>
@@ -387,7 +386,8 @@
             Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
             <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> 
             como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, ayudar en las tareas que fueran 
-            necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, reforzar posiciones y dar entrada o salida a acciones.
+            necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, 
+            reforzar posiciones y dar entrada o salida a acciones.
           </p>
           <div class="skills">
             <span>PHP</span>
@@ -406,12 +406,11 @@
         <div class="company">
           <h3>Gnarum</h3>
           <p class="entry-description">
-            Entré en Gnarum porque tras el fallecimiento de mi padre necesitaba un trabajo que me permitiera seguir con mis planes económicos 
-            a la vez que ayudar a mi madre. 
-            <br>En este trabajo me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
-            Sin embargo, tuve un compañero excelente que me enseñó muchísimo sobre buenas prácticas, arquitectura y clean code. Esto ha sido lo que más 
+            Debido a un cambio en mi familia, necesitaba un trabajo que me permitiera seguir con mis planes económicos a la vez que ayudaba más en casa.
+            <br>En Gnarum me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
+            Además, tuve un compañero al que puedo llamar mentor y que me enseñó muchísimo sobre buenas prácticas, arquitectura y clean code. Esto ha sido lo que más 
             me ha marcado de esta etapa.
-            <br>Entre mis mayores logros en Gnarum, ayudé a mejorar las principales webs tanto por hacer nuevas funcionalidades como por refactorizaciones 
+            <br>Entre mis mayores logros aquí, ayudé a mejorar las principales webs tanto por hacer nuevas funcionalidades como por refactorizaciones 
             siguiendo estas enseñanzas de mi compañero, siendo el refactor más importante el del cambio de resolución horaria a cuartohoraria que entró en 
             vigor en diferentes partes de Europa a lo largo de 2025.
           </p>
@@ -434,9 +433,11 @@
           <p class="entry-description">
             Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
             Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
-            <br>Aunque empecé con diferentes tareas en diferentes proyectos, en seguida me quedé con la calculadora residencial de instalaciones fotovoltaicas y su complejo algoritmo de optimización de paneles.
-            Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo 
-            con IKEA para la instalación de paneles en España y Portugal.
+            <br>Aunque empecé con diferentes tareas en diferentes proyectos, en seguida me quedé con la calculadora residencial de instalaciones fotovoltaicas 
+            y su complejo algoritmo de optimización de paneles. Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación 
+            de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo con IKEA para la instalación de paneles en España y Portugal.
+            <br>Aunque en el resto de trabajos los compañeros también han sido geniales y me he llevado buenos amigos, 
+            quiero destacar que el grupo que se formó aquí fue excepcional.
           </p>
           <div class="skills">
             <span>C#</span>
@@ -454,9 +455,9 @@
         <div class="company">
           <h3>Instituto de Ingeniería del Conocimiento (IIC)</h3>
           <p class="entry-description">
-            Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. Dicho proyecto consistía en la refactorización 
-            del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de 
-            base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
+            Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. 
+            Dicho proyecto consistía en la refactorización del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, 
+            ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
           </p>
           <div class="skills">
             <span>Python</span>
@@ -498,6 +499,9 @@
       <div class="personal-data">
         <span class="email">
           <a href="mailto:ignaciojhergomez@gmail.com">ignaciojhergomez@gmail.com</a>
+        </span>
+        <span>
+          Primera versión funcional de está página. En progreso...
         </span>
       </div>
     </div>
