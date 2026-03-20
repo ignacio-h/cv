@@ -153,7 +153,7 @@
 
       & > section.history {
         & > article {
-          display: grid;
+          display: block grid;
           grid-template-columns: 220px 1fr;
           gap: 0 4rem;
           padding: 3rem 0;
@@ -161,9 +161,9 @@
           opacity: 0;
           transform: translateY(16px);
           transition: opacity .55s ease, transform .55s ease;
-
+          
           &:hover .timeline::after {
-            background: var(--accent);
+            background-color: var(--accent);
             border-color: var(--accent);
           }
 
@@ -187,7 +187,7 @@
               top: .55rem;
               bottom: -3rem;
               width: 1px;
-              background: var(--border);
+              background-color: var(--border);
             }
             
             &::after {
@@ -198,7 +198,7 @@
               width: 7px;
               height: 7px;
               border-radius: 50%;
-              background: var(--dim);
+              background-color: var(--dim);
               border: 1px solid var(--muted);
             }
 
@@ -219,7 +219,7 @@
 
           /* ─── RIGHT COLUMN ─── */
           & > .company {
-            & > h3 {
+            & > h2 {
               font-size: 1.25rem;
               font-weight: 700;
               color: var(--heading);
@@ -294,24 +294,6 @@
       }
     }
 
-    .pulsing-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2.5s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: .2;
-      }
-    }
-
     @media (max-width: 680px) {
       main > section.introduction,
       main > section.history > article,
@@ -377,7 +359,7 @@
           <span class="roles">Programador<br>Soporte</span>
         </div>
         <div class="company">
-          <h3>El Club de Inversión</h3>
+          <h2>El Club de Inversión</h2>
           <p class="entry-description">
             Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
             <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> 
@@ -400,7 +382,7 @@
           <span class="roles">.NET Developer<br>Full Stack</span>
         </div>
         <div class="company">
-          <h3>Gnarum</h3>
+          <h2>Gnarum</h2>
           <p class="entry-description">
             Debido a un cambio en mi familia, necesitaba un trabajo que me permitiera seguir con mis planes económicos a la vez que ayudaba más en casa.
             <br>En Gnarum me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
@@ -425,7 +407,7 @@
           <span class="roles">Junior .NET<br>Developer</span>
         </div>
         <div class="company">
-          <h3>Gesternova</h3>
+          <h2>Gesternova</h2>
           <p class="entry-description">
             Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
             Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
@@ -449,7 +431,7 @@
           <span class="roles">Prácticas</span>
         </div>
         <div class="company">
-          <h3>Instituto de Ingeniería del Conocimiento (IIC)</h3>
+          <h2>Instituto de Ingeniería del Conocimiento (IIC)</h2>
           <p class="entry-description">
             Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. 
             Dicho proyecto consistía en la refactorización del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, 
@@ -470,7 +452,7 @@
           <span class="roles">Grado en<br>Matemáticas e Informática</span>
         </div>
         <div class="company">
-          <h3>Universidad Politécnica de Madrid</h3>
+          <h2>Universidad Politécnica de Madrid</h2>
           <p class="entry-description">
             Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque no tenía ni idea de nada, pero tenía mucha curiosidad por aprender.
             <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
@@ -496,7 +478,13 @@
           <a href="mailto:ignaciojhergomez@gmail.com"><i class="fa-solid fa-envelope"></i></a>
         </span>
         <span>
-          <a href="https://www.linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank"><i class="fa-brands fa-square-linkedin"></i></a>
+          <a href="https://linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank"><i class="fa-brands fa-square-linkedin"></i></a>
+        </span>
+        <span>
+          <a href="https://github.com/ignacio-h" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+        </span>
+        <span>
+          <a href="https://gitlab.com/ignacio.h" target="_blank"><i class="fa-brands fa-square-gitlab"></i></a>
         </span>
       </div>
       <span>
@@ -506,23 +494,25 @@
   </footer>
 
   <script>
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    // clousure para ahorrar memoria
+    (function () {
+      const year = document.getElementById('copyright-year')?.textContent;
+      if (year)
+        year.textContent = new Date().getFullYear();
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  
+      document.querySelectorAll('.history > article').forEach(function(el) {
+        observer.observe(el);
       });
-    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.history > article').forEach(function(el) {
-      observer.observe(el);
-    });
-
-    const year = document.getElementById('copyright-year');
-    if (year) {
-      year.textContent = new Date().getFullYear();
-    }
+    })();
   </script>
 
 </body>
