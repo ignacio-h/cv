@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Currículum de Ignacio J. Hernández Gómez, desarrollador .NET Backend especializado en clean code, arquitectura de software, CSS moderno y finanzas. Experiencia en Gnarum, Gesternova, El Club de Inversión y más." />
   <title>Ignacio</title>
-  <link rel="icon" href="imgs/logo-1-no-bg-2_1.png" />
+  <link rel="icon" href="imgs/logo-1-no-bg-2_1.webp" />
   <!-- https://fontawesome.com/search?ic=free-collection -->
   <link rel="stylesheet" href="css/font-awesome-701.min.css" />
   <style>
@@ -99,139 +100,139 @@
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 var(--pad);
+    }
 
-      & > section.introduction {
-        border-bottom: 1px solid var(--border);
-        padding: 8rem 0 6rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        align-items: center;
-        
-        & > img {
-          width: clamp(var(--photo-min-width), var(--photo-width), var(--photo-max-width));
-          aspect-ratio: 1/1;
-          height: auto;
-          border-radius: var(--photo-radius);
-          border: 1px solid var(--border);
-          object-fit: cover;
-          display: block;
-          flex-shrink: 0;
-          transition: opacity .3s ease, transform .3s ease;
+    #introduction {
+      border-bottom: 1px solid var(--border);
+      padding: 8rem 0 6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      
+      & > img {
+        width: clamp(var(--photo-min-width), var(--photo-width), var(--photo-max-width));
+        aspect-ratio: 1/1;
+        height: auto;
+        border-radius: var(--photo-radius);
+        border: 1px solid var(--border);
+        object-fit: cover;
+        display: block;
+        flex-shrink: 0;
+        transition: opacity .3s ease, transform .3s ease;
 
-          &:hover {
-            opacity: .85;
-            transform: scale(1.02);
-          }
-        }
-
-        & > div {
-          flex: 1;
-          min-width: 260px;
-
-          & > h1 {
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.0;
-            letter-spacing: -.03em;
-            color: var(--heading);
-            margin-bottom: 1.25rem;
-          }
-
-          & > p {
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.85;
-
-            & > strong {
-              color: var(--text);
-              font-weight: 400;
-            }
-          }
+        &:hover {
+          opacity: .85;
+          transform: scale(1.02);
         }
       }
 
-      & > section.history {
-        & > article {
-          display: block grid;
-          grid-template-columns: 220px 1fr;
-          gap: 0 4rem;
-          padding: 3rem 0;
-          border-bottom: 1px solid var(--border);
-          opacity: 0;
-          transform: translateY(16px);
-          transition: opacity .55s ease, transform .55s ease;
-          
-          &:hover .timeline::after {
-            background-color: var(--accent);
-            border-color: var(--accent);
+      & > div {
+        flex: 1;
+        min-width: 260px;
+
+        & > h1 {
+          font-size: clamp(2.8rem, 6vw, 5.5rem);
+          font-weight: 900;
+          line-height: 1.0;
+          letter-spacing: -.03em;
+          color: var(--heading);
+          margin-bottom: 1.25rem;
+        }
+
+        & > p {
+          font-size: 1rem;
+          color: var(--muted);
+          line-height: 1.85;
+
+          & > strong {
+            color: var(--text);
+            font-weight: 400;
           }
+        }
+      }
+    }
 
-          &.visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          /* ─── LEFT COLUMN ─── */
-          & > .timeline {
-            padding-top: .15rem;
-            display: flex;
-            flex-direction: column;
-            gap: .4rem;
-            position: relative;
-            
-            &::before {
-              content: '';
-              position: absolute;
-              left: -1.5rem;
-              top: .55rem;
-              bottom: -3rem;
-              width: 1px;
-              background-color: var(--border);
-            }
-            
-            &::after {
-              content: '';
-              position: absolute;
-              left: calc(-1.5rem - 3px);
-              top: .55rem;
-              width: 7px;
-              height: 7px;
-              border-radius: 50%;
-              background-color: var(--dim);
-              border: 1px solid var(--muted);
-            }
-
-            & > .dates {
-              font-family: var(--mono);
-              font-size: .7rem;
-              color: var(--accent);
-              letter-spacing: .05em;
-            }
+    #history {
+      & > article {
+        display: block grid;
+        grid-template-columns: 220px 1fr;
+        gap: 0 4rem;
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border);
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .55s ease, transform .55s ease;
         
-            & > .roles {
-              font-family: var(--mono);
-              font-size: .72rem;
-              color: var(--muted);
-              line-height: 1.5;
-            }
+        &:hover .timeline::after {
+          background-color: var(--accent);
+          border-color: var(--accent);
+        }
+
+        &.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* ─── LEFT COLUMN ─── */
+        & > .timeline {
+          padding-top: .15rem;
+          display: flex;
+          flex-direction: column;
+          gap: .4rem;
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: .55rem;
+            bottom: -3rem;
+            width: 1px;
+            background-color: var(--border);
+          }
+          
+          &::after {
+            content: '';
+            position: absolute;
+            left: calc(-1.5rem - 3px);
+            top: .55rem;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--dim);
+            border: 1px solid var(--muted);
           }
 
-          /* ─── RIGHT COLUMN ─── */
-          & > .company {
-            & > h2 {
-              font-size: 1.25rem;
-              font-weight: 700;
-              color: var(--heading);
-              letter-spacing: -.015em;
-              margin-bottom: .9rem;
-            }
+          & > .dates {
+            font-family: var(--mono);
+            font-size: .7rem;
+            color: var(--accent);
+            letter-spacing: .05em;
+          }
+      
+          & > .roles {
+            font-family: var(--mono);
+            font-size: .72rem;
+            color: var(--muted);
+            line-height: 1.5;
+          }
+        }
 
-            & > p {
-              font-size: .95rem;
-              color: var(--text);
-              line-height: 1.85;
-            }
+        /* ─── RIGHT COLUMN ─── */
+        & > .company {
+          & > h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--heading);
+            letter-spacing: -.015em;
+            margin-bottom: .9rem;
+          }
+
+          & > p {
+            font-size: .95rem;
+            color: var(--text);
+            line-height: 1.85;
           }
         }
       }
@@ -295,30 +296,26 @@
     }
 
     @media (max-width: 680px) {
-      main > section.introduction,
-      main > section.history > article,
+      #introduction,
+      #history > article,
       footer > div {
         grid-template-columns: 1fr;
         gap: 1.5rem 0;
       }
 
-      main > section.introduction {
+      #introduction {
         flex-direction: column;
         align-items: center;
         text-align: center;
-      }
-
-      main > section.introduction > div {
-        min-width: auto;
+        padding: 5rem 0 4rem; 
+        
+        & > div {
+          min-width: auto;
+        }
       }
 
       .timeline::before, .timeline::after { 
         display: none; 
-      }
-
-      main > section.introduction 
-      { 
-        padding: 5rem 0 4rem; 
       }
     }
   </style>
@@ -332,8 +329,8 @@
   </header>
 
   <main>
-    <section class="introduction">
-      <img src="imgs/personal.png" alt="Ignacio J. Hernández Gómez">
+    <section id="introduction">
+      <img src="imgs/personal.avif" alt="Ignacio J. Hernández Gómez">
 
       <div>
         <h1>Ignacio J.<br>Hernández Gómez</h1>
@@ -352,7 +349,7 @@
       </div>
     </section>
 
-    <section class="history">
+    <section id="history">
       <article>
         <div class="timeline">
           <span class="dates">Julio 2024 — Diciembre 2025</span>
@@ -362,7 +359,7 @@
           <h2>El Club de Inversión</h2>
           <p class="entry-description">
             Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
-            <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank">calculadoras financieras</a> 
+            <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank" aria-label="Visita la página de calculadoras financieras programadas por mí.">calculadoras financieras</a> 
             como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, ayudar en las tareas que fueran 
             necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, 
             reforzar posiciones y dar entrada o salida a acciones.
@@ -475,16 +472,16 @@
     <div>
       <div class="personal-data">
         <span>
-          <a href="mailto:ignaciojhergomez@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+          <a href="mailto:ignaciojhergomez@gmail.com" aria-label="Envíame un correo."><i class="fa-solid fa-envelope"></i></a>
         </span>
         <span>
-          <a href="https://linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank"><i class="fa-brands fa-square-linkedin"></i></a>
+          <a href="https://linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank" aria-label="Visita mi perfil de LinkedIn."><i class="fa-brands fa-square-linkedin"></i></a>
         </span>
         <span>
-          <a href="https://github.com/ignacio-h" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+          <a href="https://github.com/ignacio-h" target="_blank" aria-label="Visita mi perfil de GitHub."><i class="fa-brands fa-square-github"></i></a>
         </span>
         <span>
-          <a href="https://gitlab.com/ignacio.h" target="_blank"><i class="fa-brands fa-square-gitlab"></i></a>
+          <a href="https://gitlab.com/ignacio.h" target="_blank" aria-label="Visita mi perfil de GitLab."><i class="fa-brands fa-square-gitlab"></i></a>
         </span>
       </div>
       <span>
@@ -496,7 +493,7 @@
   <script>
     // clousure para ahorrar memoria
     (function () {
-      const year = document.getElementById('copyright-year')?.textContent;
+      const year = document.getElementById('copyright-year');
       if (year)
         year.textContent = new Date().getFullYear();
 
@@ -509,7 +506,7 @@
         });
       }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
   
-      document.querySelectorAll('.history > article').forEach(function(el) {
+      document.querySelectorAll('#history > article').forEach(function(el) {
         observer.observe(el);
       });
     })();
