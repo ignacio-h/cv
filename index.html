@@ -94,34 +94,55 @@
       z-index: 100;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       
       & > div {
+        width: 100%;
         max-width: var(--max);
-        margin: 0 auto;
         display: flex;
-        justify-content: flex-start;
         align-items: center;
-
+        justify-content: space-between;
         
-        & > span {
-          padding: 1rem;
-          font-family: var(--mono);
-          font-size: .78rem;
-          color: var(--accent);
-          letter-spacing: .04em;
-          cursor: pointer;
-          
-          &:hover {
-            background-color: var(--border);
-          }
+        & > nav {
+          display: flex;
+          gap: 0.5rem;
 
-          & > em { 
-            color: var(--muted); 
-            font-style: normal; 
+          & > span {
+            padding: 1rem;
+            font-family: var(--mono);
+            font-size: .78rem;
+            letter-spacing: .04em;
+            cursor: pointer;
+            transition: background .2s;
+
+            & > em {
+              color: var(--muted);
+              font-style: normal;
+            }
+
+            &:hover {
+              background-color: var(--border);
+            }
           }
+        }
+
+        & > .actions {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
         }
       }
     }
+
+    #theme-selector:not(:checked) ~ #theme-selector-label > .icon-day   { display: none; }
+    #theme-selector:not(:checked) ~ #theme-selector-label > .icon-night  { display: block; }
+    #theme-selector:checked ~ #theme-selector-label > .icon-day   { display: block; }
+    #theme-selector:checked ~ #theme-selector-label > .icon-night { display: none; }
+
+    #theme-selector-label { cursor: pointer; }
 
     main {
       max-width: var(--max);
@@ -269,7 +290,8 @@
           padding: 0 var(--pad);
           display: flex;
           justify-content: space-between;
-
+          align-items: center;
+          
           & > span {
             font-family: var(--mono);
           }
@@ -316,6 +338,24 @@
     }
 
     @media (max-width: 680px) {
+      header {
+        height: auto;
+        padding: 0 .5rem;
+        
+        & > div {
+          align-items: stretch;
+          gap: .5rem;
+
+          & > nav {
+            justify-content: center;
+          }
+
+          & > .actions {
+            justify-content: flex-end;
+          }
+        }
+      }
+
       #introduction,
       #history > article,
       footer > div {
@@ -345,8 +385,19 @@
 
   <header>
     <div>
-      <span>Curriculum<em>.cs</em></span>
-      <span><label>Dark:<input type="checkbox" id="theme-selector" checked /></label></span>
+      <nav>
+        <span>Curriculum<em>.cs</em></span>
+      </nav>
+
+      <div class="actions">
+        <div>
+          <input type="checkbox" checked id="theme-selector" style="display: none;" />
+          <label for="theme-selector" id="theme-selector-label" aria-label="Cambiar tema">
+            <i class="icon-day fa-solid fa-sun"></i>
+            <i class="icon-night fa-solid fa-moon"></i>
+          </label>
+        </div>
+      </div>
     </div>
   </header>
 
