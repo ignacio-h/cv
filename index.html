@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Currículum de Ignacio J. Hernández Gómez, desarrollador .NET Backend especializado en clean code, arquitectura de software, CSS moderno y finanzas. Experiencia en Gnarum, Gesternova, El Club de Inversión y más." />
+  <title>Ignacio</title>
+  <link rel="icon" href="imgs/logo-1-no-bg-2_1.webp" />
+  <!-- https://fontawesome.com/search?ic=free-collection -->
+  <link rel="stylesheet" href="css/font-awesome-701.min.css" />
+  <style>
+    *, *::before, *::after 
+    { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    :root {
+      --mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max: 1100px;
+      /* --pad: clamp(1.5rem, 5vw, 5rem); */
+      --pad: 1rem;
+      --photo-width: 20vw;
+      --photo-min-width: 230px;
+      --photo-max-width: 330px;
+      --photo-radius: 50%;
+
+      --theme-color-hue: 208;
+      --chroma: 0.0;
+      --lightness: 95%;
+      --base: oklch(var(--lightness) var(--chroma) var(--theme-color-hue));
+      --base-contrast-modifier: -78;
+      --border-lightness: -0.1;
+      --text-lightness: -0.75;
+      --muted-lightness: -0.75;
+      --heading-lightness: -0.55;
+      --accent-lightness: -0.55;
+      --bg: var(--base);
+      --border: oklch(from var(--base) calc(l + var(--border-lightness)) c h);
+      --text: oklch(from var(--base) calc(l + var(--text-lightness)) c h);
+      --muted: oklch(from var(--base) calc(l + var(--muted-lightness)) c h);
+      --heading: oklch(from var(--base) calc(l + var(--heading-lightness)) calc(c + 0.15) calc(h + var(--base-contrast-modifier)));
+      --accent: oklch(from var(--base) calc(l + var(--accent-lightness)) calc(c + 0.15) calc(h + var(--base-contrast-modifier)));
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      overflow-x: hidden;
+
+      &.dark {
+        --base: oklch(20% var(--chroma) var(--theme-color-hue));
+        --border-lightness: +0.1;
+        --text-lightness: +0.75;
+        --muted-lightness: +0.75;
+        --heading-lightness: +0.75;
+        --accent-lightness: +0.65;
+        --bg: var(--base);
+        --border: oklch(from var(--base) calc(l + var(--border-lightness)) c h);
+        --text: oklch(from var(--base) calc(l + var(--text-lightness)) c h);
+        --muted: oklch(from var(--base) calc(l + var(--muted-lightness)) c h);
+        --heading: oklch(from var(--base) calc(l + var(--heading-lightness)) calc(c + 0.15) calc(h + var(--base-contrast-modifier)));
+        --accent: oklch(from var(--base) calc(l + var(--accent-lightness)) calc(c + 0.1) calc(h + var(--base-contrast-modifier)));
+      }
+    }
+
+    ::-webkit-scrollbar { 
+      width: 4px; 
+    }
+    ::-webkit-scrollbar-track { 
+      background: var(--bg); 
+    }
+    ::-webkit-scrollbar-thumb { 
+      background: var(--border); 
+      border-radius: 2px; 
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      & > div {
+        width: 100%;
+        max-width: var(--max);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        & > nav {
+          display: flex;
+          gap: 0.5rem;
+
+          & > span {
+            padding: 1rem;
+            font-family: var(--mono);
+            font-size: .78rem;
+            letter-spacing: .04em;
+            cursor: pointer;
+            transition: background .2s;
+
+            & > em {
+              color: var(--muted);
+              font-style: normal;
+            }
+
+            &:hover {
+              background-color: var(--border);
+            }
+          }
+        }
+
+        & > .actions {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+
+    #theme-selector:not(:checked) ~ #theme-selector-label > .icon-day   { display: none; }
+    #theme-selector:not(:checked) ~ #theme-selector-label > .icon-night  { display: block; }
+    #theme-selector:checked ~ #theme-selector-label > .icon-day   { display: block; }
+    #theme-selector:checked ~ #theme-selector-label > .icon-night { display: none; }
+
+    #theme-selector-label { cursor: pointer; }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    #introduction {
+      border-bottom: 1px solid var(--border);
+      padding: 8rem 0 6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      
+      & > img {
+        width: clamp(var(--photo-min-width), var(--photo-width), var(--photo-max-width));
+        aspect-ratio: 1/1;
+        height: auto;
+        border-radius: var(--photo-radius);
+        border: 1px solid var(--border);
+        object-fit: cover;
+        display: block;
+        flex-shrink: 0;
+        transition: opacity .3s ease, transform .3s ease;
+
+        &:hover {
+          opacity: .85;
+          transform: scale(1.02);
+        }
+      }
+
+      & > div {
+        flex: 1;
+        min-width: 260px;
+
+        & > h1 {
+          font-size: clamp(2.8rem, 6vw, 5.5rem);
+          font-weight: 900;
+          line-height: 1.0;
+          letter-spacing: -.03em;
+          color: var(--heading);
+          margin-bottom: 1.25rem;
+        }
+
+        & > p {
+          font-size: 1rem;
+          line-height: 1.85;
+        }
+      }
+    }
+
+    #history {
+      & > article {
+        display: block grid;
+        grid-template-columns: 220px 1fr;
+        gap: 0 4rem;
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border);
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity .55s ease, transform .55s ease;
+        
+        &:hover .timeline::after {
+          background-color: var(--accent);
+          border-color: var(--accent);
+        }
+
+        &.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* ─── LEFT COLUMN ─── */
+        & > .timeline {
+          padding-top: .15rem;
+          display: flex;
+          flex-direction: column;
+          gap: .4rem;
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: .55rem;
+            bottom: -3rem;
+            width: 1px;
+            background-color: var(--border);
+          }
+          
+          &::after {
+            content: '';
+            position: absolute;
+            left: calc(-1.5rem - 3px);
+            top: .55rem;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--bg);
+            border: 1px solid var(--muted);
+          }
+
+          & > .dates {
+            font-family: var(--mono);
+            font-size: .7rem;
+            color: var(--accent);
+            letter-spacing: .05em;
+            font-weight: bolder;
+          }
+      
+          & > .roles {
+            font-family: var(--mono);
+            font-size: .72rem;
+            line-height: 1.5;
+          }
+        }
+
+        /* ─── RIGHT COLUMN ─── */
+        & > .company {
+          & > h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--heading);
+            letter-spacing: -.015em;
+            margin-bottom: .9rem;
+          }
+
+          & > p {
+            font-size: .95rem;
+            color: var(--text);
+            line-height: 1.85;
+          }
+        }
+      }
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      
+        & > div {
+          max-width: var(--max);
+          margin: 0 auto;
+          padding: 0 var(--pad);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+          & > span {
+            font-family: var(--mono);
+          }
+          
+          & > .personal-data {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            & i {
+              font-size: 1.75rem;
+            }
+          }
+        }
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: 1.4rem;
+      cursor: default;
+      
+      & > span {
+        font-family: var(--mono);
+        font-size: .63rem;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: .18rem .6rem;
+        border-radius: 2px;
+        letter-spacing: .04em;
+        transition: color .2s, border-color .2s;
+
+        &:hover {
+          border-color: var(--text);
+        }
+      }
+    }
+
+    @media (max-width: 680px) {
+      header {
+        height: auto;
+        padding: 0 .5rem;
+        
+        & > div {
+          align-items: stretch;
+          gap: .5rem;
+
+          & > nav {
+            justify-content: center;
+          }
+
+          & > .actions {
+            justify-content: flex-end;
+          }
+        }
+      }
+
+      #introduction,
+      #history > article,
+      footer > div {
+        grid-template-columns: 1fr;
+        gap: 1.5rem 0;
+      }
+
+      #introduction {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 5rem 0 4rem; 
+        
+        & > div {
+          min-width: auto;
+        }
+      }
+
+      .timeline::before, .timeline::after { 
+        display: none; 
+      }
+    }
+  </style>
+</head>
+
+<body class="dark">
+
+  <header>
+    <div>
+      <nav>
+        <span>Curriculum<em>.cs</em></span>
+      </nav>
+
+      <div class="actions">
+        <div>
+          <input type="checkbox" checked id="theme-selector" style="display: none;" />
+          <label for="theme-selector" id="theme-selector-label" aria-label="Cambiar tema">
+            <i class="icon-day fa-solid fa-sun"></i>
+            <i class="icon-night fa-solid fa-moon"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="introduction">
+      <img src="imgs/personal.avif" alt="Ignacio J. Hernández Gómez">
+
+      <div>
+        <h1>Ignacio J.<br>Hernández Gómez</h1>
+        <p>
+          Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
+          por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
+          <br>También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+        </p>
+        <div class="skills">
+          <span>C#</span>
+          <span>.NET Core</span>
+          <span>Clean Code</span>
+          <span>CSS moderno</span>
+          <span>Finanzas e inversiones</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="history">
+      <article>
+        <div class="timeline">
+          <span class="dates">Julio 2024 — Diciembre 2025</span>
+          <span class="roles">Programador<br>Soporte</span>
+        </div>
+        <div class="company">
+          <h2>El Club de Inversión</h2>
+          <p class="entry-description">
+            Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
+            <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank" aria-label="Visita la página de calculadoras financieras programadas por mí.">calculadoras financieras</a> 
+            como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, ayudar en las tareas que fueran 
+            necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, 
+            reforzar posiciones y dar entrada o salida a acciones.
+          </p>
+          <div class="skills">
+            <span>PHP</span>
+            <span>WordPress</span>
+            <span>Discord</span>
+            <span>Inversiones</span>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="timeline">
+          <span class="dates">Octubre 2022 — Marzo 2025</span>
+          <span class="roles">.NET Developer<br>Full Stack</span>
+        </div>
+        <div class="company">
+          <h2>Gnarum</h2>
+          <p class="entry-description">
+            Debido a un cambio en mi familia, necesitaba un trabajo que me permitiera seguir con mis planes económicos a la vez que ayudaba más en casa.
+            <br>En Gnarum me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
+            Además, tuve un compañero al que puedo llamar mentor y que me enseñó muchísimo sobre buenas prácticas, arquitectura y clean code. Esto ha sido lo que más 
+            me ha marcado de esta etapa.
+            <br>Entre mis mayores logros aquí, ayudé a mejorar las principales webs tanto por hacer nuevas funcionalidades como por refactorizaciones 
+            siguiendo estas enseñanzas de mi compañero, siendo el refactor más importante el del cambio de resolución horaria a cuartohoraria que entró en 
+            vigor en diferentes partes de Europa a lo largo de 2025.
+          </p>
+          <div class="skills">
+            <span>C#</span>
+            <span>.NET Framework</span>
+            <span>SAP</span>
+            <span>Clean Code</span>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="timeline">
+          <span class="dates">Julio 2019 — Septiembre 2022</span>
+          <span class="roles">Junior .NET<br>Developer</span>
+        </div>
+        <div class="company">
+          <h2>Gesternova</h2>
+          <p class="entry-description">
+            Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
+            Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
+            <br>Aunque empecé con diferentes tareas en diferentes proyectos, en seguida me quedé con la calculadora residencial de instalaciones fotovoltaicas 
+            y su complejo algoritmo de optimización de paneles. Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación 
+            de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo con IKEA para la instalación de paneles en España y Portugal.
+            <br>Aunque en el resto de trabajos los compañeros también han sido geniales y me he llevado buenos amigos, 
+            quiero destacar que el grupo que se formó aquí fue excepcional.
+          </p>
+          <div class="skills">
+            <span>C#</span>
+            <span>.NET Core</span>
+            <span>SQL Server</span>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="timeline">
+          <span class="dates">Septiembre 2017 — Junio 2019</span>
+          <span class="roles">Prácticas</span>
+        </div>
+        <div class="company">
+          <h2>Instituto de Ingeniería del Conocimiento (IIC)</h2>
+          <p class="entry-description">
+            Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. 
+            Dicho proyecto consistía en la refactorización del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, 
+            ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
+          </p>
+          <div class="skills">
+            <span>Python</span>
+            <span>Bash</span>
+            <span>IBM db2</span>
+            <span>Scripts</span>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="timeline">
+          <span class="dates">Septiembre 2014 — Enero 2019</span>
+          <span class="roles">Grado en<br>Matemáticas e Informática</span>
+        </div>
+        <div class="company">
+          <h2>Universidad Politécnica de Madrid</h2>
+          <p class="entry-description">
+            Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque no tenía ni idea de nada, pero tenía mucha curiosidad por aprender.
+            <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
+            que me hizo despertar esa vocación por la programación que me ha llevado hasta donde estoy hoy.
+          </p>
+          <div class="skills">
+            <span>Java</span>
+            <span>Python</span>
+            <span>Matlab</span>
+            <span>Maple</span>
+            <span>Matemáticas</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <div class="personal-data">
+        <span>
+          <a href="mailto:ignaciojhergomez@gmail.com" aria-label="Envíame un correo."><i class="fa-solid fa-envelope"></i></a>
+        </span>
+        <span>
+          <a href="https://linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank" aria-label="Visita mi perfil de LinkedIn."><i class="fa-brands fa-square-linkedin"></i></a>
+        </span>
+        <span>
+          <a href="https://github.com/ignacio-h" target="_blank" aria-label="Visita mi perfil de GitHub."><i class="fa-brands fa-square-github"></i></a>
+        </span>
+        <span>
+          <a href="https://gitlab.com/ignacio.h" target="_blank" aria-label="Visita mi perfil de GitLab."><i class="fa-brands fa-square-gitlab"></i></a>
+        </span>
+      </div>
+      <span>
+        Primera versión funcional de está página. En progreso... © <span id="copyright-year"></span>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // clousure para ahorrar memoria
+    (function () {
+      const year = document.getElementById('copyright-year');
+      if (year)
+        year.textContent = new Date().getFullYear();
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  
+      document.querySelectorAll('#history > article').forEach(function(el) {
+        observer.observe(el);
+      });
+
+      const checkbox = document.getElementById('theme-selector');
+      checkbox.addEventListener('change', function () {
+        document.startViewTransition(() => {
+          document.body.classList.toggle('dark', checkbox.checked);
+        });
+      })
+    })();
+  </script>
+
+</body>
+</html>
