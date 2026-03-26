@@ -27,23 +27,21 @@
       --photo-max-width: 330px;
       --photo-radius: 50%;
 
-      --theme-color-hue: 360;
+      --theme-color-hue: 208;
       --chroma: 0.0;
       --lightness: 95%;
       --base: oklch(var(--lightness) var(--chroma) var(--theme-color-hue));
-      --base-contrast-modifier: 90;
+      --base-contrast-modifier: -78;
       --border-lightness: -0.1;
       --text-lightness: -0.75;
       --muted-lightness: -0.75;
-      --dim-lightness: -0.45;
-      --heading-lightness: -0.75;
+      --heading-lightness: -0.55;
       --accent-lightness: -0.55;
       --bg: var(--base);
       --border: oklch(from var(--base) calc(l + var(--border-lightness)) c h);
       --text: oklch(from var(--base) calc(l + var(--text-lightness)) c h);
       --muted: oklch(from var(--base) calc(l + var(--muted-lightness)) c h);
-      --dim: oklch(from var(--base) calc(l + var(--dim-lightness)) c h);
-      --heading: oklch(from var(--base) calc(l + var(--heading-lightness)) c h);
+      --heading: oklch(from var(--base) calc(l + var(--heading-lightness)) calc(c + 0.15) calc(h + var(--base-contrast-modifier)));
       --accent: oklch(from var(--base) calc(l + var(--accent-lightness)) calc(c + 0.15) calc(h + var(--base-contrast-modifier)));
     }
 
@@ -64,15 +62,13 @@
         --border-lightness: +0.1;
         --text-lightness: +0.75;
         --muted-lightness: +0.75;
-        --dim-lightness: +0.45;
         --heading-lightness: +0.75;
         --accent-lightness: +0.65;
         --bg: var(--base);
         --border: oklch(from var(--base) calc(l + var(--border-lightness)) c h);
         --text: oklch(from var(--base) calc(l + var(--text-lightness)) c h);
         --muted: oklch(from var(--base) calc(l + var(--muted-lightness)) c h);
-        --dim: oklch(from var(--base) calc(l + var(--dim-lightness)) c h);
-        --heading: oklch(from var(--base) calc(l + var(--heading-lightness)) c h);
+        --heading: oklch(from var(--base) calc(l + var(--heading-lightness)) calc(c + 0.15) calc(h + var(--base-contrast-modifier)));
         --accent: oklch(from var(--base) calc(l + var(--accent-lightness)) calc(c + 0.1) calc(h + var(--base-contrast-modifier)));
       }
     }
@@ -242,7 +238,7 @@
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background-color: var(--dim);
+            background-color: var(--bg);
             border: 1px solid var(--muted);
           }
 
@@ -310,7 +306,6 @@
 
     a {
       color: var(--accent);
-      text-decoration: none;
     }
 
     .skills {
@@ -331,7 +326,6 @@
         transition: color .2s, border-color .2s;
 
         &:hover {
-          color: var(--text);
           border-color: var(--text);
         }
       }
