@@ -17,6 +17,7 @@
     }
 
     :root {
+      scrollbar-gutter: stable;
       --mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
       --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --max: 1100px;
@@ -46,7 +47,11 @@
     }
 
     html { 
-      scroll-behavior: smooth; 
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      min-height: 100vh;
     }
 
     body {
@@ -56,12 +61,18 @@
       font-size: 15px;
       line-height: 1.75;
       overflow-x: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: 
+      "header"
+      "main"
+      "footer";
 
       &.dark {
         --base: oklch(20% var(--chroma) var(--theme-color-hue));
         --border-lightness: +0.1;
-        --text-lightness: +0.75;
-        --muted-lightness: +0.75;
+        --text-lightness: +0.6;
+        --muted-lightness: +0.6;
         --heading-lightness: +0.75;
         --accent-lightness: +0.65;
         --bg: var(--base);
@@ -85,6 +96,7 @@
     }
 
     header {
+      grid-area: header;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -149,6 +161,7 @@
     #theme-selector-label { cursor: pointer; }
 
     main {
+      grid-area: main;
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 var(--pad);
@@ -159,6 +172,7 @@
     }
 
     footer {
+      grid-area: footer;
       border-top: 1px solid var(--border);
       padding: 2.5rem 0;
       
