@@ -105,52 +105,46 @@
       color: var(--accent);
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       padding: 0 1rem;
+      width: 100%;
       
-      & > div {
-        width: 100%;
+      & > .logo {
+        height: 3.5em;
+        width: auto;
+      }
+      
+      & > nav {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
 
-        & > .logo {
-          height: 3.5em;
-          width: auto;
-        }
-        
-        & > nav {
-          display: flex;
+        & > span {
+          padding: 1rem;
+          font-family: var(--mono);
+          font-size: .78rem;
+          letter-spacing: .04em;
+          cursor: pointer;
+          transition: background .2s;
 
-          & > span {
-            padding: 1rem;
-            font-family: var(--mono);
-            font-size: .78rem;
-            letter-spacing: .04em;
-            cursor: pointer;
-            transition: background .2s;
+          & > em {
+            color: var(--muted);
+            font-style: normal;
+          }
 
-            & > em {
-              color: var(--muted);
-              font-style: normal;
-            }
+          &:hover {
+            background-color: var(--border);
+            text-decoration: underline;
+          }
 
-            &:hover {
-              background-color: var(--border);
-              text-decoration: underline;
-            }
-
-            &.active {
-              background-color: var(--border);
-            }
+          &.active {
+            background-color: var(--border);
           }
         }
+      }
 
-        & > .actions {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
+      & > .actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
       }
     }
 
@@ -467,22 +461,20 @@
 <body class="dark">
 
   <header>
-    <div>
-      <img src="imgs/logo-1-no-bg-2_1.webp" alt="Logo" class="logo">
-      <nav>
-        <span data-main-content="about" class="active">SobreMi<em>.cs</em></span>
-        <span data-main-content="cv">Curriculum<em>.cs</em></span>
-      </nav>
+    <img src="imgs/logo-1-no-bg-2_1.webp" alt="Logo" class="logo">
+    <nav>
+      <span data-main-content="about" class="active">SobreMi<em>.cs</em></span>
+      <span data-main-content="cv">Curriculum<em>.cs</em></span>
+    </nav>
 
-      <div class="actions">
-        <div>
-          <input type="checkbox" checked id="theme-selector" style="display: none;" />
-          <label for="theme-selector" id="theme-selector-label" aria-label="Cambiar tema">
-            <i class="icon-day fa-solid fa-lightbulb"></i>
-            <i class="icon-night fa-regular fa-lightbulb"></i>
-            <!-- <i class="icon-night fa-solid fa-moon"></i> -->
-          </label>
-        </div>
+    <div class="actions">
+      <div>
+        <input type="checkbox" checked id="theme-selector" style="display: none;" />
+        <label for="theme-selector" id="theme-selector-label" aria-label="Cambiar tema">
+          <i class="icon-day fa-solid fa-lightbulb"></i>
+          <i class="icon-night fa-regular fa-lightbulb"></i>
+          <!-- <i class="icon-night fa-solid fa-moon"></i> -->
+        </label>
       </div>
     </div>
   </header>
