@@ -204,53 +204,69 @@
       color: var(--accent);
     }
 
+    article {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
 
-    #cv {
-      #introduction {
-        border-bottom: 1px solid var(--border);
-        padding: 8rem 0 6rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        align-items: center;
-        
-        & > img {
-          width: clamp(var(--photo-min-width), var(--photo-width), var(--photo-max-width));
-          aspect-ratio: 1/1;
-          height: auto;
-          border-radius: var(--photo-radius);
-          border: 1px solid var(--border);
-          object-fit: cover;
-          display: block;
-          flex-shrink: 0;
-          transition: opacity .3s ease, transform .3s ease;
-  
-          &:hover {
-            opacity: .85;
-            transform: scale(1.02);
-          }
-        }
-  
-        & > div {
-          flex: 1;
-          min-width: 260px;
-  
-          & > h1 {
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.0;
-            letter-spacing: -.03em;
-            color: var(--heading);
-            margin-bottom: 1.25rem;
-          }
-  
-          & > p {
-            font-size: 1rem;
-            line-height: 1.85;
-          }
+      &.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .quote {
+      font-family: serif;
+      font-style: italic;
+    }
+
+    .introduction {
+      border-bottom: 1px solid var(--border);
+      padding: 8rem 0 6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      text-wrap: balance;
+      
+      & > img {
+        width: clamp(var(--photo-min-width), var(--photo-width), var(--photo-max-width));
+        aspect-ratio: 1/1;
+        height: auto;
+        border-radius: var(--photo-radius);
+        border: 1px solid var(--border);
+        object-fit: cover;
+        display: block;
+        flex-shrink: 0;
+        transition: opacity .3s ease, transform .3s ease;
+
+        &:hover {
+          opacity: .85;
+          transform: scale(1.02);
         }
       }
-  
+
+      & > div {
+        flex: 1;
+        min-width: 260px;
+
+        & > h1 {
+          font-size: clamp(2.8rem, 6vw, 5.5rem);
+          font-weight: 900;
+          line-height: 1.0;
+          letter-spacing: -.03em;
+          color: var(--heading);
+          margin-bottom: 1.25rem;
+        }
+
+        & > p {
+          font-size: 1rem;
+          line-height: 1.85;
+        }
+      }
+    }
+
+    #cv {
       #history {
         & > article {
           display: block grid;
@@ -258,18 +274,10 @@
           gap: 0 4rem;
           padding: 3rem 0;
           border-bottom: 1px solid var(--border);
-          opacity: 0;
-          transform: translateY(16px);
-          transition: opacity .55s ease, transform .55s ease;
           
           &:hover .timeline::after {
             background-color: var(--accent);
             border-color: var(--accent);
-          }
-  
-          &.visible {
-            opacity: 1;
-            transform: translateY(0);
           }
   
           /* ─── LEFT COLUMN ─── */
@@ -335,31 +343,75 @@
           }
         }
       }
-  
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: .35rem;
-        margin-top: 1.4rem;
-        cursor: default;
-        
-        & > span {
-          font-family: var(--mono);
-          font-size: .63rem;
-          color: var(--text);
-          border: 1px solid var(--border);
-          padding: .18rem .6rem;
-          border-radius: 2px;
-          letter-spacing: .04em;
-          transition: color .2s, border-color .2s;
-  
-          &:hover {
-            border-color: var(--text);
-          }
+    }
+
+    #about {
+      & > section > article {
+        gap: 0 4rem;
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+
+        &:hover::after {
+          background-color: var(--accent);
+          border-color: var(--accent);
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -1.5rem;
+          top: 4rem;
+          bottom: 1rem;
+          width: 1px;
+          background-color: var(--border);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: calc(-1.5rem - 3px);
+          top: 4rem;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background-color: var(--bg);
+          border: 1px solid var(--muted);
+        }
+
+        & > h2 {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--heading);
+          letter-spacing: -.015em;
+          margin-bottom: .9rem;
         }
       }
     }
+  
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: 1.4rem;
+      cursor: default;
+      
+      & > span {
+        font-family: var(--mono);
+        font-size: .63rem;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: .18rem .6rem;
+        border-radius: 2px;
+        letter-spacing: .04em;
+        transition: color .2s, border-color .2s;
 
+        &:hover {
+          border-color: var(--text);
+        }
+      }
+    }
+    
     @media (max-width: 680px) {
       header {
         height: auto;
@@ -384,22 +436,23 @@
         gap: 1.5rem 0;
       }
 
+      .introduction {
+        grid-template-columns: 1fr;
+        gap: 1.5rem 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 5rem 0 4rem; 
+        
+        & > div {
+          min-width: auto;
+        }
+      }
+
       #cv {
-        #introduction,
         #history > article {
           grid-template-columns: 1fr;
           gap: 1.5rem 0;
-        }
-  
-        #introduction {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          padding: 5rem 0 4rem; 
-          
-          & > div {
-            min-width: auto;
-          }
         }
   
         .timeline::before, .timeline::after { 
@@ -415,8 +468,8 @@
   <header>
     <div>
       <nav>
-        <span data-main-content="cv" class="active">Curriculum<em>.cs</em></span>
-        <span data-main-content="about">SobreMí<em>.cs</em></span>
+        <span data-main-content="about" class="active">SobreMi<em>.cs</em></span>
+        <span data-main-content="cv">Curriculum<em>.cs</em></span>
       </nav>
 
       <div class="actions">
@@ -433,9 +486,67 @@
   </header>
 
   <main>
-    <div id="cv" class="active">
-      <section id="introduction">
+    <div id="about" class="active">
+      <section class="introduction">
         <img src="imgs/personal.avif" alt="Ignacio J. Hernández Gómez">
+
+        <div>
+          <h1 class="quote">"Un día sin humor es un día perdido."</h1>
+          <p>
+            Aunque mi nombre formal es Ignacio, también respondo a Nacho y hasta lo prefiero. El otro lo dejo para la pestaña de al lado 😂
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <article>
+          <h2>Sobre mí</h2>
+          <p>
+            Soy una persona alegre y con energía, de las que llegan el lunes a la oficina de buen humor.
+            No porque el trabajo sea lo único que me importa, sino porque creo que pasamos demasiadas horas trabajando como para no disfrutarlo 😁
+            <br>Me gusta el buen rollo, las bromas y que haya un poco de humor en el día a día. 
+            Eso sí, sin que nadie salga perdiendo, porque la idea es divertirse.
+          </p>
+        </article>
+
+        <article>
+          <h2>Deporte</h2>
+          <p>
+            El deporte es una parte importante de mi vida. Juego al fútbol de forma amistosa, pero me gusta darlo todo. 
+            También practico artes marciales y escalo de vez en cuando, principalmente boulder. Además entreno en general para mantenerme activo 
+            y siempre que hay ocasión me apunto a probar lo que sea: pádel, kayak, surf, paracaidismo... 💪
+          </p>
+        </article>
+
+        <article>
+          <h2>Lo que me hace desconectar</h2>
+          <p>
+            Fuera del deporte, me encantan los videojuegos con cierto criterio, que el tiempo y el dinero son limitados.
+            El género me suele dar más igual y principalmente de un jugador, pero de vez en cuando mola algo cooperativo con algún amigo. 
+            <br><br>Los juegos de mesa también me encantan y tengo unos cuantos (para acabar jugando siempre a los mismos o los que traen los demás... 😑).
+            <br><br>Una ruta en moto, uff... Qué poco la cojo en comparación con lo que la disfruto. 
+            <br>Ir por la carretera, sin coches, viendo el paisaje, escuchar el "ronroneo" del motor... 🤤 Y cuando se junta un amigo... increíble.
+            <br><br>Por último, y para nada menos importante, los amigos y mi familia. Seré informático y cumpliré algunos estereotipos, pero el de antisocial no 😂
+          </p>
+        </article>
+
+        <article>
+          <h2>Lo que me hace pensar</h2>
+          <p>
+            La psicología y la filosofía cada vez me despiertan más interés por ver diferentes formas de entender las cosas.
+            <br><br>La programación, obviamente. Aquí sí cumplo uno de los estereotipos de que me gusta programar fuera del trabajo 😂
+            Me gusta mucho aprender cosas nuevas, ver cómo evolucionan los lenguajes que uso para mejorar lo que programo y hacer proyectos personales.
+            <br><br>Las inversiones han formado una parte muy importante de mi vida desde que en 2020 leyera "Padre Rico, Padre Pobre".
+            Considero que es necesario si queremos llegar a la jubilación con tranquilidad financiera. Además, es muy interesante descubrir empresas, ver qué hacen y cómo. 
+            Creo que esta mentalidad curiosa se complementa muy bien con la de un programador.
+          </p>
+        </article>
+      </section>
+    </div>
+
+    <div id="cv">
+      <section class="introduction">
+        <img src="imgs/profesional.avif" alt="Ignacio J. Hernández Gómez">
 
         <div>
           <h1>Ignacio J.<br>Hernández Gómez</h1>
@@ -572,14 +683,6 @@
 
       </section>
     </div>
-
-    <div id="about">
-      <section>
-        <h2>Sobre mí</h2>
-        <p>Soy un desarrollador apasionado por la tecnología y la programación. Me encanta aprender cosas nuevas y enfrentarme a retos que me permitan crecer profesionalmente.</p>
-      </section>
-    </div>
-
   </main>
 
   <footer>
@@ -599,7 +702,7 @@
         </span>
       </div>
       <span>
-        Primera versión funcional de está página. En progreso... © <span id="copyright-year"></span>
+        © <span id="copyright-year"></span>
       </span>
     </div>
   </footer>
@@ -644,7 +747,7 @@
         { threshold: 0, rootMargin: '0px 0px -40px 0px' }
       );
 
-      document.querySelectorAll('#history > article').forEach(function(el) {
+      document.querySelectorAll('article').forEach(function(el) {
         observer.observe(el);
       });
     })();
