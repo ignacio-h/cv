@@ -106,13 +106,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0 1rem;
       
       & > div {
         width: 100%;
-        max-width: var(--max);
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        & > .logo {
+          height: 3.5em;
+          width: auto;
+        }
         
         & > nav {
           display: flex;
@@ -145,10 +150,6 @@
           display: flex;
           align-items: center;
           gap: 1rem;
-
-          & > * {
-            padding: 1rem;
-          }
         }
       }
     }
@@ -411,7 +412,7 @@
         }
       }
     }
-    
+
     @media (max-width: 680px) {
       header {
         height: auto;
@@ -467,6 +468,7 @@
 
   <header>
     <div>
+      <img src="imgs/logo-1-no-bg-2_1.webp" alt="Logo" class="logo">
       <nav>
         <span data-main-content="about" class="active">SobreMi<em>.cs</em></span>
         <span data-main-content="cv">Curriculum<em>.cs</em></span>
@@ -512,7 +514,8 @@
         <article>
           <h2>Deporte</h2>
           <p>
-            El deporte es una parte importante de mi vida. Juego al fútbol de forma amistosa, pero me gusta darlo todo. 
+            Soy una persona competitiva y me importa la salud, por lo que el deporte es una parte importante de mi vida. 
+            Juego amistosos de fútbol porque las ligas son demasiado agresivas, pero me gusta darlo todo igualmente.
             También practico artes marciales y escalo de vez en cuando, principalmente boulder. Además entreno en general para mantenerme activo 
             y siempre que hay ocasión me apunto a probar lo que sea: pádel, kayak, surf, paracaidismo... 💪
           </p>
@@ -535,7 +538,7 @@
           <p>
             La psicología y la filosofía cada vez me despiertan más interés por ver diferentes formas de entender las cosas.
             <br><br>La programación, obviamente. Aquí sí cumplo uno de los estereotipos de que me gusta programar fuera del trabajo 😂
-            Me gusta mucho aprender cosas nuevas, ver cómo evolucionan los lenguajes que uso para mejorar lo que programo y hacer proyectos personales.
+            Me gusta mucho aprender cosas nuevas, ver cómo evolucionan los lenguajes que uso para mejorar lo que programo y hacer proyectos personales (como esta web).
             <br><br>Las inversiones han formado una parte muy importante de mi vida desde que en 2020 leyera "Padre Rico, Padre Pobre".
             Considero que es necesario si queremos llegar a la jubilación con tranquilidad financiera. Además, es muy interesante descubrir empresas, ver qué hacen y cómo. 
             Creo que esta mentalidad curiosa se complementa muy bien con la de un programador.
