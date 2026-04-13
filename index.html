@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Currículum de Ignacio J. Hernández Gómez, desarrollador .NET Backend especializado en clean code, arquitectura de software, CSS moderno y finanzas. Experiencia en Gnarum, Gesternova, El Club de Inversión y más." />
+  <meta name="description" content="Página personal de Ignacio Hernández. Aquí podrás encontrar información personal sobre mí y mi CV." />
   <title>Ignacio</title>
   <link rel="icon" href="imgs/logo-1-no-bg-2_1.webp" />
   <!-- https://fontawesome.com/search?ic=free-collection -->
@@ -62,7 +62,7 @@
       line-height: 1.75;
       overflow-x: hidden;
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: clamp(50px, 10vw, 70px) 1fr auto;
       grid-template-areas: 
       "header"
       "main"
@@ -110,15 +110,20 @@
       width: 100%;
       
       & > .logo {
-        height: 3.5em;
+        height: stretch;
         width: auto;
       }
       
       & > nav {
         display: flex;
+        align-items: center;
+        height: stretch;
 
         & > span {
-          padding: 1rem;
+          padding: 0 1.5rem;
+          height: stretch;
+          display: flex;
+          align-items: center;
           font-family: var(--mono);
           font-size: .78rem;
           letter-spacing: .04em;
@@ -487,7 +492,8 @@
         <div>
           <h1 class="quote">"Un día sin humor es un día perdido."</h1>
           <p>
-            Aunque mi nombre formal es Ignacio, también respondo a Nacho y hasta lo prefiero. El otro lo dejo para la pestaña de al lado 😂
+            Aunque mi nombre formal es Ignacio, también respondo a Nacho y hasta lo prefiero (como podrás ver por el logo 😁).
+            Aquí voy a presentarme de una forma más natural, aunque implique poner una foto casi con los ojos cerrados... todo lo formal lo dejo para la pestaña de al lado 😂
           </p>
         </div>
       </section>
@@ -684,7 +690,7 @@
     <div>
       <div class="personal-data">
         <span>
-          <a href="mailto:ignaciojhergomez@gmail.com" aria-label="Envíame un correo."><i class="fa-solid fa-envelope"></i></a>
+          <a href="mailto:ignaciohg32@gmail.com" aria-label="Envíame un correo."><i class="fa-solid fa-envelope"></i></a>
         </span>
         <span>
           <a href="https://linkedin.com/in/ignacio-javier-hernandez-gomez/" target="_blank" aria-label="Visita mi perfil de LinkedIn."><i class="fa-brands fa-square-linkedin"></i></a>
