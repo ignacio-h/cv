@@ -128,7 +128,7 @@
           font-size: .78rem;
           letter-spacing: .04em;
           cursor: pointer;
-          transition: background .2s;
+          transition: background-color .2s;
 
           & > em {
             color: var(--muted);
@@ -212,6 +212,10 @@
       &.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      & ul {
+        padding: var(--pad);
       }
     }
 
@@ -502,31 +506,34 @@
         <article>
           <h2>Sobre mí</h2>
           <p>
-            Soy una persona alegre y con energía, de las que llegan el lunes a la oficina de buen humor.
-            No porque el trabajo sea lo único que me importa, sino porque creo que pasamos demasiadas horas trabajando como para no disfrutarlo 😁
-            <br>Me gusta el buen rollo, las bromas y que haya un poco de humor en el día a día. 
-            Eso sí, sin que nadie salga perdiendo, porque la idea es divertirse.
+            Soy una persona alegre y con energía, de las que llegan el lunes a la oficina con ganas.
+            Me gusta el humor, las bromas y que haya buen rollo en el día a día. Creo que pasamos demasiadas horas trabajando como para no hacerlo más disfrutable 😁
+            <br>Me gusta pensar que de esta forma consigo ayudar a personas que lo están pasando mal y lo llevan por dentro.
+            <br><br>Del fútbol he aprendido a esforzarme hasta el final, aunque haya momentos duros donde todo se haga cuesta arriba. Y de la psicología, que es mejor
+            centrarse en lo que se puede controlar y remar en esa dirección.
           </p>
         </article>
 
         <article>
-          <h2>Deporte</h2>
+          <h2>Deporte y salud</h2>
           <p>
             Soy una persona competitiva y me importa la salud, por lo que el deporte es una parte importante de mi vida. 
-            Juego amistosos de fútbol porque las ligas son demasiado agresivas, pero me gusta darlo todo igualmente.
-            También practico artes marciales y escalo de vez en cuando, principalmente boulder. Además entreno en general para mantenerme activo 
+            Me gusta darlo todo en los partidos de fútbol, aunque esté perdido, si no ha terminado voy a seguir corriendo hasta el final.
+            <br><br>También practico artes marciales y escalo de vez en cuando. Además entreno en general para mantenerme activo 
             y siempre que hay ocasión me apunto a probar lo que sea: pádel, kayak, surf, paracaidismo... 💪
+            <br><br>Sí, además soy de esos bichos raros que usa las escaleras en vez del ascensor, aunque tenga que subir 7 pisos.
           </p>
         </article>
 
         <article>
           <h2>Lo que me hace desconectar</h2>
           <p>
-            Fuera del deporte, me encantan los videojuegos con cierto criterio, que el tiempo y el dinero son limitados.
+            Fuera del deporte, me encantan los videojuegos de calidad, que el tiempo y el dinero son limitados (no, confirmo que no he tocado el LoL en mi vida ✌😎).
             El género me suele dar más igual y principalmente de un jugador, pero de vez en cuando mola algo cooperativo con algún amigo. 
             <br><br>Los juegos de mesa también me encantan y tengo unos cuantos (para acabar jugando siempre a los mismos o los que traen los demás... 😑).
             <br><br>Una ruta en moto, uff... Qué poco la cojo en comparación con lo que la disfruto. 
             <br>Ir por la carretera, sin coches, viendo el paisaje, escuchar el "ronroneo" del motor... 🤤 Y cuando se junta un amigo... increíble.
+            <br><br>Un paseo andando, ya sea en silencio o escuchando algún podcast o música.
             <br><br>Por último, y para nada menos importante, los amigos y mi familia. Seré informático y cumpliré algunos estereotipos, pero el de antisocial no 😂
           </p>
         </article>
@@ -535,8 +542,9 @@
           <h2>Lo que me hace pensar</h2>
           <p>
             La psicología y la filosofía cada vez me despiertan más interés por ver diferentes formas de entender las cosas.
-            <br><br>La programación, obviamente. Aquí sí cumplo uno de los estereotipos de que me gusta programar fuera del trabajo 😂
+            <br><br>La programación, obviamente, aquí sí cumplo uno de los estereotipos 😂
             Me gusta mucho aprender cosas nuevas, ver cómo evolucionan los lenguajes que uso para mejorar lo que programo y hacer proyectos personales (como esta web).
+            Tengo la filosofía de que nadie nace aprendido y lo importante es tener curiosidad y ganas por saciarla.
             <br><br>Las inversiones han formado una parte muy importante de mi vida desde que en 2020 leyera "Padre Rico, Padre Pobre".
             Considero que es necesario si queremos llegar a la jubilación con tranquilidad financiera. Además, es muy interesante descubrir empresas, ver qué hacen y cómo. 
             Creo que esta mentalidad curiosa se complementa muy bien con la de un programador.
@@ -555,12 +563,13 @@
             Desarrollador .NET Backend apasionado por el <strong>código limpio</strong>, la arquitectura bien organizada y, últimamente,
             por lo que el <strong>CSS moderno</strong> permite hacer sin frameworks.
             <br>También he pasado por el fascinante mundo de la <strong>educación financiera</strong> y las <strong>inversiones</strong>.
+            <br>Mi objetivo es ser un <strong>artesano del software</strong>.
           </p>
           <div class="skills">
             <span>C#</span>
-            <span>.NET Core</span>
-            <span>Clean Code</span>
+            <span>.NET</span>
             <span>CSS moderno</span>
+            <span>Fullstack</span>
             <span>Finanzas e inversiones</span>
           </div>
         </div>
@@ -569,23 +578,99 @@
       <section id="history">
         <article>
           <div class="timeline">
+            <span class="dates">Enero 2026 — Actualidad</span>
+            <span class="roles">Autodidacta</span>
+          </div>
+          <div class="company">
+            <h2>Tiempo sabático</h2>
+            <p>
+              Tras ver que El Club de Inversión no era mi sitio para crecer como programador por no poder desarollar ese SaaS estratégico y porque la falta de trato con las personas me pasaba factura, 
+              decidí dejarlo para no retrasarles con sus proyectos y tomarme unas semanas tranquilas.
+              <br><br>Hay personas que descubren su vocación pronto, pero los que no, tenemos que dedicar los primeros años de carrera profesional a equivocarnos, aprender de los errores, 
+              probar cosas distintas y así poder descubrir nuestro camino.
+              <br>Esta etapa la estoy aprovechando para hacer reflexión de estos primeros años. Poner un poco de pausa y aprovechar el tiempo para aprender todas esas cosas que 
+              se van acumulando en la lista de pendientes como Angular, Docker, Kubernetes, Azure... 
+              <br>Tengo ganas de encontrar ese trabajo donde me sienta realizado y tranquilo, sin cambios frecuentes de trabajo. 
+              Para así tener esa estabilidad sobre la cual seguir construyendo mi vida laboral, pero también la personal.
+              <br><br>Por ahora llevo:
+              <ul>
+                <li>
+                  Esta <a href="https://github.com/ignacio-h/cv" target="_blank" aria-label="Repositorio de mi página web personal.">página web</a>.
+                </li>
+                <li>
+                  Mi primer proyecto con <a href="https://github.com/ignacio-h/angular-test" target="_blank" aria-label="Repositorio del primer proyecto con Angular.">Angular 21</a>
+                  donde he aprendido las bases sobre componentes, servicios, RxJS, signals y rutas.
+                  Está en camino otro proyecto con Angular para profundizar más en formularios, HttpInterceptors, EventEmitter, Content Projection, testing...
+                </li>
+                <li>
+                  Las bases de Docker con intención de seguir con Kubernetes para tener una visión completa.
+                </li>
+              </ul>
+              Estoy descubriendo que la IA es una gran aliada si la sabes utilizar y me está encantando aprender sobre todas estas cosas que hasta hace poco no sabía nada. 
+              Principalmente estoy usando Calude por su gran puntuación en benchmarks de programación.
+            </p>
+            <div class="skills">
+              <span>CSS moderno</span>
+              <span>Angular</span>
+              <span>Docker</span>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <div class="timeline">
             <span class="dates">Julio 2024 — Diciembre 2025</span>
             <span class="roles">Programador<br>Soporte</span>
           </div>
           <div class="company">
             <h2>El Club de Inversión</h2>
-            <p class="entry-description">
-            Aunque fue un salto que no terminó saliendo como esperaba, esta etapa fue una experiencia radicalmente diferente a lo que venía haciendo y muy gratificante.
-            <br>Me centré principalmente en desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank" aria-label="Visita la página de calculadoras financieras programadas por mí.">calculadoras financieras</a> 
-            como plugins de WordPress, prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa, ayudar en las tareas que fueran 
-            necesarias en los eventos presenciales o la gestión de una cartera prototipo orientada a dividendos para enseñar a los alumnos cómo hacer un seguimiento de cartera, 
-            reforzar posiciones y dar entrada o salida a acciones.
+            <p>
+              Cuando se me presentó la oportunidad de trabajar aquí, lo sentí como una de esas oportunidades que tienes que probar o te quedarás con la espina siempre.
+              <br>Fue un salto un poco al vacío porque implicaba salir de mi zona de confort, hacerme autónomo y darle algo más de foco a la docencia sobre finanzas e inversiones que a la programación.
+              Pero no quería dejar a mis compañeros de Gnarum y, como hice en Gesternova, les avisé también con dos meses de antelación para dar tiempo a cerrar las tareas y proyectos en los que estaba involucrado.
+              <br><br>Me centré principalmente en: 
+              <ul>
+                <li>
+                  Desarrollar las <a href="https://www.elclubdeinversion.com/calculadoras-financieras/" target="_blank" aria-label="Visita la página de calculadoras financieras programadas por mí.">calculadoras financieras</a> 
+                  como plugins de WordPress. Aunque PHP no sea mi lenguaje favorito, disfruté muchísimo llevarlas a cabo y ver cómo aumentaban las visitas y retención en el blog.
+                  Teníamos el objetivo de desarrollar calculadoras financieras más completas que las de la competencia. Para esto hubo que estudiar los principales resultados de búsqueda de Google, entender lo que hacían esas calculadoras
+                  y darle una vuelta para ofrecer más y mejor, tanto a nivel de funcionalidad como de UX para que las personas pudieran entender los resultados y sacarles el máximo partido.
+                </li>
+                <li>
+                  Diseñé el servidor de la comunidad de Discord. Fue una tarea que me gustó bastante porque siempre me ha gustado jugar con el diseño de roles y permisos, y Discord para esto da mucho juego.
+                </li>
+                <li>
+                  Prestar soporte a los alumnos de los cursos sobre dudas relacionadas con los cursos de la empresa. Tanto por correo como por Discord. Ésta fue la primera tarea diferente a la programación y, 
+                  aunque no era mi tarea favorita, la gratificación de ayudar a los alumnos con sus dudas y ver su progreso era increíble.
+                  Además, me ayudó a mejorar mis habilidades de comunicación y a entender mejor las necesidades de los usuarios.
+                </li>
+                <li>
+                  Hacer el seguimiento de la cartera de dividendos. Además de los cursos, El Club de Inversión ofrece una membresía llamada El Club de Dividendos que ofrece una cartera de acciones orientada a dividendos.
+                  Para cada empresa hay un análisis y cada mes se detallan las principales noticias relacionadas con las empresas de la cartera, si se añadía una nueva empresa o si, por el contrario, se quitaba alguna.
+                  Yo me encargaba de hacer ese seguimiento de noticias, revisar que los fundamentales seguían siendo buenos y, si no, tomar la decisión de darle salida y, por último, de buscar nuevas empresas para tener siempre
+                  una cartera de entre 20 y 25 empresas.
+                </li>
+                <li>
+                  Diseñar un SaaS del que no puedo comentar nada por ahora. Éste era el proyecto estrella que más me atraía, lamentablemente el resto de tareas me impedían dedicarle el tiempo que requería 
+                  y apenas pude pasar de un boceto del modelo de datos antes de que se decidiera externalizar para poder avanzar.
+                </li>
+                <li>
+                  Por último, también ayudaba con tareas que surgieran como actualizar contenidos del temario o ayudar con la organización de los eventos presenciales.
+                </li>
+              </ul>
+              De esta experiencia me quedo con los compañeros con los que trabajé. Aunque fue todo en remoto y nos veíamos en los cuatro eventos presenciales que había al año, se formó un grupo muy bueno y me llevo grandes amigos de esta etapa.
             </p>
             <div class="skills">
               <span>PHP</span>
+              <span>JavaScript</span>
+              <span>CSS</span>
+              <span>HTML</span>
               <span>WordPress</span>
+              <span>GIT</span>
               <span>Discord</span>
               <span>Inversiones</span>
+              <span>Google Sheets</span>
+              <span>IA</span>
             </div>
           </div>
         </article>
@@ -597,20 +682,61 @@
           </div>
           <div class="company">
             <h2>Gnarum</h2>
-            <p class="entry-description">
-            Debido a un cambio en mi familia, necesitaba un trabajo que me permitiera seguir con mis planes económicos a la vez que ayudaba más en casa.
-            <br>En Gnarum me centré más en .NET Framework en vez de .NET Core, además de que cambié SQL Server por SAP. 
-            Además, tuve un compañero al que puedo llamar mentor y que me enseñó muchísimo sobre buenas prácticas, arquitectura y clean code. Esto ha sido lo que más 
-            me ha marcado de esta etapa.
-            <br>Entre mis mayores logros aquí, ayudé a mejorar las principales webs tanto por hacer nuevas funcionalidades como por refactorizaciones 
-            siguiendo estas enseñanzas de mi compañero, siendo el refactor más importante el del cambio de resolución horaria a cuartohoraria que entró en 
-            vigor en diferentes partes de Europa a lo largo de 2025.
+            <p>
+              Debido a un cambio en mi familia, necesitaba un trabajo que me permitiera seguir con mis planes económicos a la vez que ayudaba más en casa económicamente. Como en Gesternova
+              no podían hacerme esa revisión salarial, avisé con dos meses de antelación para poder ayudarles lo máximo posible con mi marcha y entré en Gnarum.
+              <br><br>Mis principales tareas fueron:
+              <ul>
+                <li>
+                  Desarrollar una vista para administradores de estados de envío de previsiones a los clientes. Era una vista crucial para la web de Forecast, una de las más importantes de Gnarum, ya que la operativa de 
+                  los clientes depende de que las previsiones de generación de energía les llegue bien y a tiempo. Gracias a esta vista se podía ver qué envíos habían ido bien, cuáles habían tenido algún problema
+                  y cuáles habían fallado y por qué.
+                  <br>A partir de esta vista fuimos capaces de encontrar bugs y fallos de diseño que pudimos refactorizar para mejorar la fiablidad del envío de previsiones.
+                </li>
+                <li>
+                  Cambio visual de la web de Forcast. Fue una tarea que disfruté bastante porque me permitió dejar atrás el diseño anticuado que tenía y poner en práctica mejores prácticas de CSS. 
+                  También aproveché para añadir algunas ideas mías para mejorar cómo mostrar algunos datos con un sistema de pestañas para vistas con varias secciones.
+                  <br>Esta revisión también incluyo una refactorización de las vistas de informes que contenían una gráfica y una serie de KPIs. Estos KPIs eran muy poco eficientes y, gracias a un buen uso 
+                  de JavaScript, conseguí que se calcularan de forma inmediata en vez de tardar varios segundos.
+                </li>
+                <li>
+                  Otro de los mayores cambios de identidad de Forecast fue el llamado "black box". Hasta entonces los clientes podían elegir entre una serie de algoritmos, tanto internos como de proveedores
+                  externos, para los envíos de las predicciones. 
+                  Como esto no debía ser responsabilidad suya, esta tarea consistió en crear una capa intermedia de proveedores, 
+                  que era lo que pasarían a ver y elegir los usuarios, y ya no serían conscientes de qué algoritmos subyacían realmente.
+                  Esto implicó un cambio estructural total, desde la base de datos, pasando por los servicios del backend, hasta el frontend. Fue un cambio muy delicado, pero que salió bastante bien.
+                </li>
+                <li>
+                  La web más importante por delante de Forecast era Trade. Con ella los clientes podían operar su energía y hacer las diferentes comunicaciones con OMIE y Red Eléctrica. Aquí apoyé de forma 
+                  destacada en la migración de la resolución horaria a cuartohoraria. Esta tarea fue titánica porque implicó deshacer la primera idea que ya estaba muy avanzada y empezar 
+                  a adoptar una mentalidad de "multirresolución" para no adaptarnos a una o dos resoluciones concretas, sino tener la versatilidad de poder trabajar con cualquier resolución en el futuro.
+                  <br>Esta tarea ha sido una de las más importantes en mi carrera porque supuso un cambio de mentalidad por mi parte para pasar de alguien a quien le dicen qué tareas tiene que hacer a 
+                  alguien que cogió la responsabilidad de advertir que el camino que se estaba tomando no era bueno y ofrecer esta alternativa "multirresolución" y que mis compañeros la adoptaran también.
+                </li>
+                <li>
+                  A lo largo de estos dos años y medio tuve bastantes tareas menores, pero destacaría la capacidad de refactorización que tuve que llevar a cabo de mucho código legacy. 
+                  Aunque estas tareas llevan consigo una primera fase frustrante de lograr entenderlo, una vez que lo hacía me encantaba poder rehacerlo todo aplicando buenas prácticas, 
+                  usando generadores, value objects, reduciendo mutabilidad, creando objetos más semánticos... A veces estaba muy acotado en qué podía cambiar y otras podía darle un lavado de cara
+                  completo a un servicio entero, desde el front hasta el backend. Pero siempre conseguía mejorar la calidad del código, la eficiencia, su velocidad y su mantenibilidad.
+                  <br>De estas tareas destaco una idea que me dieron de usar structs para las unidades de energía y potencia y, en cuanto lo apliqué, todo era muchísimo más sencillo gracias a las operaciones
+                  implícitas entre kWh y MWh. Esto sentó las bases para luego acompañar a la "multirresolución" para que también fuera todo "multiunidad" y, por tanto, mucho más flexible y escalable.
+                </li>
+              </ul>
+              Podría resumir esta etapa como que fui el que resolvía los problemas que otros compañeros no podían.
+              <br>Aquí también tuve la suerte de trabajar con personas increíbles, pero lo que más destacaría es que conocí a un compañero al que puedo llamar mentor y que me enseñó muchísimo 
+              sobre buenas prácticas, arquitectura, clean code y pensar fuera de la caja. Gracias a él aprendí muchísimo y es por lo que acabé haciendo tantas tareas de refactorización, para poder poner en práctica 
+              todo lo que me iba enseñando. Desde el principio me encantó su filosfía pragmática, que no le daba miedo ir en contra de lo que el mercado decía y el que me ha hecho querer ser un artesano del software.
             </p>
             <div class="skills">
               <span>C#</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>HTML</span>
               <span>.NET Framework</span>
               <span>SAP</span>
               <span>Clean Code</span>
+              <span>SOLID</span>
+              <span>GIT</span>
             </div>
           </div>
         </article>
@@ -622,19 +748,48 @@
           </div>
           <div class="company">
             <h2>Gesternova</h2>
-            <p class="entry-description">
-            Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
-            Aquí empecé mi carrera en .NET y pude aprender bastante gracias a los fantásticos compañeros y jefe que tuve.
-            <br>Aunque empecé con diferentes tareas en diferentes proyectos, en seguida me quedé con la calculadora residencial de instalaciones fotovoltaicas 
-            y su complejo algoritmo de optimización de paneles. Esto acabó escalando en la creación de una calculadora industrial mucho más detallada y la creación 
-            de un CRM interno y adaptado a las necesidades de la empresa. Además, también colaboré en el acuerdo con IKEA para la instalación de paneles en España y Portugal.
-            <br>Aunque en el resto de trabajos los compañeros también han sido geniales y me he llevado buenos amigos, 
-            quiero destacar que el grupo que se formó aquí fue excepcional.
+            <p>
+              Entré en Gesternova tras ver que el proyecto en el que estaba en el IIC se estancaba y yo no encontraba puertas para seguir creciendo.
+              <br>Aquí empecé mi carrera en .NET y aunque al principio tuve diferentes tareas, enseguida me quedé con el proyecto de la 
+              <a href="https://contigoenergia.com/calculadora-autoconsumo-solar/" target="_blank" aria-label="Calculadora residencial de instalaciones fotovoltaicas.">calculadora residencial</a> de instalaciones fotovoltaicas.
+              Este proyecto encajó muy bien conmigo porque su complejo algoritmo de optimización de paneles era un reto para mi experiencia matemática y fue muy interesante entender cómo funcionaba.
+              Además de que me permitió mejorar mis conocimientos de .NET al ser un proyecto sencillo, pero establecido y con mucho potencial por delante.
+              <br><br>Mis tareas más destacadas fueron:
+              <ul>
+                <li>
+                  Integrar la calculadora con un CRM externo usando su API para dar de alta los <i>leads</i> y que el equipo comercial pudiera hacer el seguimiento de las personas que solicitaban el estudio. 
+                  Era la primera vez que hacía una integración de este estilo y, aunque al principio fue algo tedioso, me gustó mucho aprender a leer la documentación, trastear, hacer pruebas y ver al final los resultados.
+                </li>
+                <li>
+                  Creación de una calculadora industrial de uso interno. Esta calculadora tenía muchísimas funcionalidades adicionales para hacer las simulaciones mucho más precisas que las residenciales. 
+                  Fue una tarea muy completa porque implicó crear un nuevo formulario totalmente diferente, aprender a usar la api de mapas para dibujar las zonas instalables y actualizar el algoritmo
+                  para ser más preciso.
+                </li>
+                <li>
+                  Crear un CRM interno. Como el otro CRM se estaba quedando muy corto para las necesidades de la empresa, decidimos aprovechar la infraestructura del CRM de Gesternova para poder crear uno nuevo
+                  totalmente personalizado. Esto implicó tener mucho cuidado con la migración del anterior al nuevo, pero acabó haciéndose sin problemas. Además, a nivel personal siempre me han gustado 
+                  los roles y permisos, por lo que diseñar cómo iba a funcionar en nuestro CRM fue tan divertido como ilusionante.
+                </li>
+                <li>
+                  Colaborar con IKEA para la comercialización de instalaciones residenciales en España y Portugal. Además de toda la parte de programación y adaptar el backend para diferenciar unas ofertas de otras,
+                  también participé en las reuniones con personas de diferentes países para entender cómo sería esta colaboración y, por tanto, hacer esas adaptaciones tanto en las calculadoras, como en su gestión 
+                  en el CRM. Fue un buen reto que me permitió salir de la zona de confort para asistir a esas reuniones en inglés.
+                </li>
+              </ul>
+              Trabajar en Gesternova fue una experiencia increíble a nivel de conocimiento gracias también a las diferentes formaciones que fuimos haciendo, como la de AWS; charlas con expertos, o las 
+              charlas internas para incentivar aprender cosas nuevas y compartirlas con los compañeros.
+              <br><br>También me siento agradedcido por el jefe que tuve, que me dio confianza desde el principio y me apoyó en mi decisión de marcharme. A día de hoy sigo en contacto con él ya como amigos.
+              <br>Pero si tuviera que destacar una única cosa, incluso por encima de todo lo que aprendí y relacionado con lo anterior, es el grupo que se formó en mi departamento.
+              En todos los trabajos he conocido gente increíble, pero la química de este grupo ha ido más allá y a día de hoy seguimos haciendo planes y viajes.
             </p>
             <div class="skills">
               <span>C#</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>HTML</span>
               <span>.NET Core</span>
               <span>SQL Server</span>
+              <span>GIT</span>
             </div>
           </div>
         </article>
@@ -646,16 +801,23 @@
           </div>
           <div class="company">
             <h2>Instituto de Ingeniería del Conocimiento (IIC)</h2>
-            <p class="entry-description">
-            Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas. 
-            Dicho proyecto consistía en la refactorización del complejo proyecto de predicción eólica que ya tenía la empresa. Fue un proyecto bastante complejo e ilusionante, 
-            ya que teníamos que entender cómo funcionaba todo, hacer un nuevo diseño de base de datos y programar muchos scripts en Python para sustituir los que ya había en Bash en el proyecto antiguo.
+            <p>
+              Estuve de prácticas hasta que entregué el TFG y luego me ofrecieron un contrato temporal para continuar con el proyecto que empecé de prácticas.
+              <br>Este proyecto consistía en la refactorización del complejo proyecto de predicción eólica que ya tenía la empresa.
+              El proyecto original estaba compuesto principalmente por scripts en Bash para la lectura de las medidas que nos dejaban los clientes en un FTP y guardarlas en la base de datos. 
+              Lo mismo para las previsiones meteorológicas, ya que son necesarias para crear las predicciones de los clientes.
+              Después había un código que estaba escrito en C, y era el encargado de crear las predicciones usando diferentes algoritmos y los datos de entrada anteriores.
+              Por último, otros scripts también en Bash, se encargaban de crear los ficheros con las predicciones y subirlas al FTP para los clientes.
+              <br><br>Nuestra tarea consisitió en entender todo el funcionamiento, diseñar un nuevo modelo de base de datos porque la original tenía mucha redundancia y migrar de Bash a Python.
+              <br><br>Fue un proyecto bastante ilusionante al principio, pero se estancó en esa primera etapa de la migración a Python. Pese a esto, me encantó como experiencia ya que tuve bastante libertad
+              pese a ser un becario la mayor parte del tiempo, y pude hacer desarrollos como un igual con compañeros contratados.
             </p>
             <div class="skills">
               <span>Python</span>
               <span>Bash</span>
               <span>IBM db2</span>
-              <span>Scripts</span>
+              <span>SQL</span>
+              <span>GIT</span>
             </div>
           </div>
         </article>
@@ -667,10 +829,16 @@
           </div>
           <div class="company">
             <h2>Universidad Politécnica de Madrid</h2>
-            <p class="entry-description">
-            Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque no tenía ni idea de nada, pero tenía mucha curiosidad por aprender.
-            <br>El TFG sobre criptografía me pareció un cierre perfecto por aunar tanto las matemáticas como la programación. Además de que tuve la suerte de poder disfrutarlo tanto 
-            que me hizo despertar esa vocación por la programación que me ha llevado hasta donde estoy hoy.
+            <p>
+              Entré en este <strong>grado simple</strong> más por las matemáticas que por la informática, porque nunca había tocado nada de informática, pero tenía mucha curiosidad por aprender.
+              <br><br>Para poder aunar ambas temáticas en el TFG, se me ocurrió la idea de crear un correo electrónico como aplicación de escritorio. 
+              Gracias a esta idea, pude implementar una función hash sencilla para las contraseñas, los cifrados RSA y ElGamal y sus correspondientes firmas.
+              <br>De esta forma el usuario elegía si quería cifrar o no su correo y con qué algoritmo, y lo mismo con la firma. Todos los correos se guardaban en una base de datos SQLite, simulando ser internet.
+              <br>Si estaba cifrado, el texto y el asunto eran ininteligibles, pero si no, se podían leer perfectamente. Esto simulaba el tráfico en internet y cómo alguien podría intentar espiar la comunicación 
+              e ilustraba cómo la criptografía te protege. Por último, las firmas permitían verificar si había habido algún problema durante el envío y avisaba al usuario.
+              <br>Para este proyecto decidí usar Python porque era el lenguaje con el que más soltura tenía y, para la interfaz de escritorio, usé el framework PyQt.
+              <br><br>Este TFG sobre criptografía me pareció un cierre perfecto. Ya no sólo por aunar tanto las matemáticas como la programación, sino porque tuve la suerte de poder disfrutarlo tanto 
+              que me hizo despertar esa vocación por la programación que me ha llevado hasta donde estoy hoy.
             </p>
             <div class="skills">
               <span>Java</span>
@@ -678,6 +846,9 @@
               <span>Matlab</span>
               <span>Maple</span>
               <span>Matemáticas</span>
+              <span>Criptografía</span>
+              <span>SQLite</span>
+              <span>PyQt</span>
             </div>
           </div>
         </article>
